@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Catálogo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: pink;
+                font-family: courier;
+                color: #806282;
+                margin: 0;
+                padding: 0;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 60px;
+                text-decoration: underline;
+            }
+
+            h3 {
+                text-align: center;
+                font-size: 25px;
+            }
+
+            .catalog-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap; /* Permite que los productos se ajusten en la pantalla */
+                padding: 20px;
+            }
+
+            .product-card {
+                background-color: #e0b9eb;
+                border: 2px solid black;
+                border-radius: 8px;
+                width: 250px;
+                margin: 20px;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .product-card img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .product-title {
+                font-size: 22px;
+                margin: 10px 0;
+            }
+
+            .product-price {
+                font-size: 18px;
+                color: #333;
+            }
+
+            .product-description {
+                font-size: 16px;
+                color: #5a5a5a;
+            }
+
+            footer {
+                background-color: #e0b9eb;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+                border: 3px solid white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a href="pagina2.html">&triangleleft;</a>|
+        <a href="pagina2.html">Home</a>|
+        <a href="pagina4.html">&triangleright;</a><hr>
+        <h1>Hydrangea Jewerly</h1>
+        <h3>Catálogo de Productos</h3>
+
+        <div class="catalog-container">
+
+            <div class="product-card">
+                <img src="img/anillo1.png" alt="Anillo de Oro">
+                <h2 class="product-title">Anillo de Oro</h2>
+                <p class="product-price">₡150,000</p>
+                <p class="product-description">Elegante anillo de oro de 18 quilates con diseño clásico.</p>
+            </div>
+
+
+            <div class="product-card">
+                <img src="img/collar1.jpg" alt="Collar de Plata">
+                <h2 class="product-title">Collar de Plata</h2>
+                <p class="product-price">₡80,000</p>
+                <p class="product-description">Collar de plata pura con colgante de diamante.</p>
+            </div>
+
+
+            <div class="product-card">
+                <img src="img/pendientes1.jpg" alt="Pendientes de Rubí">
+                <h2 class="product-title">Pendientes de Rubí</h2>
+                <p class="product-price">₡120,000</p>
+                <p class="product-description">Hermosos pendientes con incrustaciones de rubí natural.</p>
+            </div>
+
+
+            <div class="product-card">
+                <img src="img/pulsera1.jpg" alt="Pulsera de Esmeralda">
+                <h2 class="product-title">Pulsera de Esmeralda</h2>
+                <p class="product-price">₡95,000</p>
+                <p class="product-description">Pulsera con esmeraldas y detalles en oro blanco.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Todos los derechos reservados.</p>
+        </footer>
+    </body>
+</html>
