@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+    <head th:fragment="head">
+        <title>Practica: Listado de árboles</title>
+        <meta charset="UTF-8">
+            <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+            <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script src="../../static/js/rutinas.js" type="text/javascript"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <main class="container">
+            <h1>Listado de Árboles</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre Común</th>
+                        <th>Tipo de Flor</th>
+                        <th>Dureza de Madera</th>
+                        <th>Altura Promedio (m)</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí Thymeleaf iterará sobre los árboles pasados desde el controlador -->
+                    <tr th:each="arbol : ${arboles}">
+                        <td th:text="${arbol.nombreComun}">Nombre Común</td>
+                        <td th:text="${arbol.tipoFlor}">Tipo de Flor</td>
+                        <td th:text="${arbol.durezaMadera}">Dureza de Madera</td>
+                        <td th:text="${arbol.alturaPromedio}">Altura Promedio</td>
+                        <td>
+                            <img th:src="${arbol.imagenRuta}" alt="Imagen de Árbol" class="img-thumbnail" style="width: 100px; height: auto;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </body>
+</html>
+
+
+<footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
+    <div class="container">
+        <div class="col">
+            <p class="lead text-center">
+                &COPY;[[#{plantilla.derechos}]]
+            </p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
