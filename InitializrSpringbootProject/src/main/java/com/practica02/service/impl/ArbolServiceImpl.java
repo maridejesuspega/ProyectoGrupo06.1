@@ -24,8 +24,13 @@ public class ArbolServiceImpl implements ArbolService {
     
     @Override
     @Transactional(readOnly = true)
-    public List<Arbol> geArbol() {
-        return arbolDao.findAll();
+    public List<Arbol> getArbol(boolean activos) {
+        // Lógica para filtrar por 'activos'
+        if (activos) {
+            return arbolDao.findAllActive();
+        } else {
+            return arbolDao.findAll(); // Devuelve todos los árboles
+        }
     }
 
     @Override
@@ -44,12 +49,5 @@ public class ArbolServiceImpl implements ArbolService {
     @Transactional
     public void delete(Arbol arbol) {
         arbolDao.delete(arbol);
-    }
-
-    @Override
-    public List<Arbol> getArbol(boolean activos) {
-    //    
-        return null;
-    //    
     }
 }

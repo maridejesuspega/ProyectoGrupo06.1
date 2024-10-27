@@ -5,6 +5,7 @@
 package com.practica02.dao;
 
 import com.practica02.domain.Arbol;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Maria
  */
 public interface ArbolDao extends JpaRepository<Arbol,Long> {
+
+    public List<Arbol> findAllActive();
     
 }
