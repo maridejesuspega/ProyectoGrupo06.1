@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Clínica Veterinaria VidaAnimal</title>
+    </head>
+    <body class="bg-custom-light">
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <!-- Imagenb de arriba con botones de iniciar sesion y registrarme -->
+        <section class="hero position-relative">
+            <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+            <div style="background: url('https://www.zooplus.es/magazine/wp-content/uploads/2024/08/Ataxia-en-perros.jpeg') center/cover; height: 78vh;">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-md-6 text-white position-relative">
+                            <h1 class="display-4 fw-bold">
+                                <span style="color: #9BBF63;">Vida</span>
+                                <span style="color: #8C207A;">Animal</span>, nos dedicamos al cuidado integral de tus mascotas.
+                            </h1>
+                            <p class="lead">Ofrecemos servicios médicos veterinarios y productos especializados en nuestra farmacia, siempre buscando lo mejor para asegurar su salud y bienestar.</p>
+                            <div class="mt-4">
+                                <a href="/registro" class="btn btn-lg me-3" style="background-color: #8C207A; color: white;">Registrarse</a>
+                                <a href="/login" class="btn btn-lg" style="background-color: #9BBF63; color: white;">Iniciar sesión</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios y tienda -->
+        <section class="services py-5">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition">
+                            <div class="card-body">
+                                <div class="icon-circle mb-3 mx-auto">
+                                    <i class="fas fa-paw fa-2x" style="color: #8C207A;"></i> 
+                                </div>
+                                <h3 class="card-title" style="color: #9BBF63;">Servicios</h3> 
+                                <p class="card-text text-muted">Descubre más sobre nuestros servicios veterinarios</p>
+                                <a href="/servicios" class="btn btn-outline" style="color: #8C207A; border-color: #8C207A;">Ver más</a> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm hover-shadow transition">
+                            <div class="card-body">
+                                <div class="icon-circle mb-3 mx-auto">
+                                    <i class="fas fa-shopping-cart fa-2x" style="color: #9BBF63;"></i> 
+                                </div>
+                                <h3 class="card-title" style="color: #8C207A;">Tienda en línea</h3> 
+                                <p class="card-text text-muted">Gran variedad de productos hasta la puerta de tu casa</p>
+                                <a href="/tienda" class="btn btn-outline" style="color: #9BBF63; border-color: #9BBF63;">Ver más</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- seccion de formulario para agendar la cita -->
+        <section class="appointment py-5">
+            <div class="container">
+                <h2 class="text-center mb-4" style="color: #8C207A;">Agenda una cita con nosotros</h2> <!-- Título en púrpura -->
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form th:action="@{/agendar-cita}" method="post" class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="nombreCompleto" placeholder="Nombre completo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" name="telefono" placeholder="Número telefónico" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-lg" style="background-color: #9BBF63; color: white;">Enviar</button> <!-- Botón en verde -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/your-code-here.js" crossorigin="anonymous"></script>
+    </body>
+</html>
