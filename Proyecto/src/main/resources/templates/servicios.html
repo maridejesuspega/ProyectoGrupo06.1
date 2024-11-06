@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Clínica Veterinaria VidaAnimal</title>
     </head>
@@ -8,46 +7,74 @@
         <header th:replace="~{layout/plantilla :: header}"/>
 
         <main class="container my-5">
-            <h1>Nuestros Servicios</h1>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Consulta General</h5>
-                            <p class="card-text">Servicio de consulta veterinaria general para su mascota.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Vacunación</h5>
-                            <p class="card-text">Programa completo de vacunación para perros y gatos.</p>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="text-center mb-5" style="color: #9BBF63;">Nuestros Servicios</h1>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Cirugía</h5>
-                            <p class="card-text">Servicios quirúrgicos con equipo especializado.</p>
-                        </div>
+            <div class="row g-4">
+                <!-- Consulta General -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://belovet.com/wp-content/uploads/2024/05/Cirugia-veterinaria.webp?auto=format&fit=crop&q=80&w=800" 
+                             class="card-img-top" alt="Consulta General" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <i class="fas fa-stethoscope me-2" style="color: #9BBF63;"></i>
+                                    Consulta General
+                                </h5>
+                                <p class="card-text">Servicio de consulta veterinaria general para su mascota.</p>
+                            </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Emergencias 24/7</h5>
-                            <p class="card-text">Atención de emergencias veterinarias las 24 horas.</p>
-                        </div>
+                <!-- Vacunación -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://www.lavanguardia.com/files/og_thumbnail/uploads/2019/10/25/5fa52ef8267ad.jpeg?auto=format&fit=crop&q=80&w=800" 
+                             class="card-img-top" alt="Vacunación" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <i class="fas fa-syringe me-2" style="color: #9BBF63;"></i>
+                                    Vacunación
+                                </h5>
+                                <p class="card-text">Programa completo de vacunación para perros y gatos.</p>
+                            </div>
                     </div>
                 </div>
 
-                <footer th:replace="~{layout/plantilla :: footer}"/>
+                <!-- Emergencias 24/7 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://rovinfood.com/wp-content/uploads/2023/11/destacada-botiquin.jpg?auto=format&fit=crop&q=80&w=800" 
+                             class="card-img-top" alt="Emergencias" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <i class="fas fa-phone-alt me-2" style="color: #9BBF63;"></i>
+                                    Emergencias 24/7
+                                </h5>
+                                <p class="card-text">Atención de emergencias veterinarias las 24 horas.</p>
+                            </div>
+                    </div>
+                </div>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="https://kit.fontawesome.com/your-code-here.js" crossorigin="anonymous"></script>
-                </body>
-                </html>
+                <!-- Cirugía -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://www.imevetcv.com/images/cirugia-veterinaria-gondomar.jpg?auto=format&fit=crop&q=80&w=800" 
+                             class="card-img-top" alt="Cirugía" style="height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex align-items-center">
+                                    <i class="fas fa-hospital me-2" style="color: #9BBF63;"></i>
+                                    Cirugía
+                                </h5>
+                                <p class="card-text">Servicios quirúrgicos con equipo especializado.</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://kit.fontawesome.com/your-code-here.js" crossorigin="anonymous"></script>
+    </body>
+</html>
