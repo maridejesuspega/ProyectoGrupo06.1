@@ -37,8 +37,7 @@ public class ServiciosController {
                                  @RequestParam String asunto,
                                  @RequestParam String mensaje,
                                  RedirectAttributes redirectAttributes) {
-        // Aquí puedes agregar la lógica para procesar el formulario
-        // Por ejemplo, enviar un email o guardar en base de datos
+        
         
         redirectAttributes.addFlashAttribute("mensaje", "Gracias por contactarnos. Te responderemos pronto.");
         return "redirect:/contacto";

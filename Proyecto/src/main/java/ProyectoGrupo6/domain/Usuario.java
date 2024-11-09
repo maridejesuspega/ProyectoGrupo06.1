@@ -21,6 +21,7 @@ public class Usuario {
     private Long idUsuario;
 
     private String nombre;
+    private String fecha;
     private String email;
     private String password;
     private String telefono;
