@@ -210,8 +210,11 @@ CREATE TABLE `productos` (
   `descripcion` text,
   `precio` decimal(10,2) NOT NULL,
   `cantidad` int NOT NULL,
+  `ruta_imagen` varchar(255) DEFAULT NULL,
+  `activo` varchar(255) DEFAULT NULL,
+  `categoria` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_producto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,6 +223,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,'Royal Canin Adult','Alimento premium para perros adultos',25000.00,50,'https://static.miscota.com/media/1/photos/products/007605/RC-VET-DRY-DogAD-MV-1-es-ES-62fcc35d65959_g.jpg','1','Alimentos'),(2,'Antipulgas Nexgard','Tratamiento mensual contra pulgas y garrapatas',15000.00,30,'https://acdn.mitiendanube.com/stores/830/783/products/n-41a101-05aefb9b7cc8427d5a16757810847077-640-0.jpg','1','Medicamentos'),(3,'Collar ajustable','Collar de nylon resistente para perros',8000.00,100,'https://www.unimart.com/cdn/shop/files/AksiPetitCollarAjustableparaPerroPetit_TallaS_1024x.jpg?v=1712031036','1','Accesorios'),(4,'Shampoo Premium','Shampoo hipoalergénico para mascotas',12000.00,40,'https://www.zooplus.es/magazine/wp-content/uploads/2020/08/productos-de-higiene-para-perros.jpeg','1','Higiene');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,4 +290,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-31 15:27:22
+-- Dump completed on 2024-11-10 20:11:21
