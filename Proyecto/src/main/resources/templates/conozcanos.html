@@ -7,7 +7,12 @@
     <body class="bg-custom-light">
         <header th:replace="~{layout/plantilla :: header}"/>
 
-        <h1 class="text-center mb-5">Clínica Vida Animal</h1>
+        <h1 class="text-center mb-5">
+
+            <img src="img/icono.png" alt="VidaAnimal" height="150">
+            <img src="../../static/img/icono.png" alt=""/>
+
+        </h1>
         <main class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -63,7 +68,10 @@
                 </div>
             </div>
         </main> 
-        <h2 class="text-center mb-5">Nuestro Equipo</h2>
+        <h2 class="text-center mb-5">
+            <span style="color: #8C207A;">Nuestro</span>
+            <span style="color: #9BBF63;">Equipo</span>
+        </h2>
         <main class="container my-5">
             <div class="row">
                 <div class="col-md-6">
@@ -83,11 +91,39 @@
 
                 <div class="col-md-6">
                     <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/315744346_578340197629683_8763371961888226522_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Ws0JWHM07V0Q7kNvgEj6NYQ&_nc_oc=AdiNTayxKtbhn1nVy8cZMBas0khnoc9QSn-AD0ikk-nGTpq3HSJPV7KY-RlZtVeEpvI&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AonYmJQgnrDJGvCbKLOED8n&oh=00_AYBMQKT5e2f3zt8d7QM0QhlTLAm44dpiBNFx0SDPUWq87g&oe=673735F1" 
-                         class="card-img-top" alt="Consulta General" style="height: 550px; object-fit: cover;">
+                         class="card-img-top" alt="Dra. Diana Barboza" style="height: 550px; object-fit: cover;">
                 </div>
             </div>
         </main>
+        <main class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Dr. Juan Pablo Varela Rojas</h2>
+                    <h5>Licenciado en Medicina y Cirugía Veterinaria</h5>
+                    <p class="card-text">El Dr. Juan Pablo Varela Rojas es parte fundamental de nuestro equipo veterinario,
+                        comprometido con la excelencia en la atención de animales pequeños y grandes. Con más de 8 años de 
+                        experiencia, se especializa en medicina interna y cirugía ortopédica, proporcionando soluciones 
+                        innovadoras y personalizadas para cada caso.</p>
+                    <div class="mb-4">
+                        <h4><i class="bi bi-geo-alt-fill"></i> Experiencia y Especialización</h4>
+                        <h5><i class="bi bi-telephone-fill"></i> 8 Años de Experiencia en Medicina Veterinaria</h5>
+                        <p>El Dr. Juan Pablo ha dedicado su carrera a la atención integral de mascotas y animales de granja, 
+                            con un enfoque en procedimientos quirúrgicos avanzados y el manejo de enfermedades complejas.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h5><i class="bi bi-telephone-fill"></i> Especialización en Cirugía Ortopédica</h5>
+                        <p>Con un enfoque en la recuperación funcional de sus pacientes, el Dr. Varela completó 
+                            una especialización en cirugía ortopédica en la Universidad Nacional Autónoma de México (UNAM)
+                            y ha participado en programas internacionales de formación en rehabilitación animal.</p>
+                    </div>  
+                </div>
 
+                <div class="col-md-6">
+                    <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/368294171_18379123498018071_6424064180114823857_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TN9ZJku2cIAQ7kNvgG4b_y-&_nc_oc=AdhkGq_wJJQGbpHRqkUSjmrYRu6Cnk795Im7ZxbcGA20tpJjNgSqcNZlqVHry5iYNtM&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=A6jzoVQze7ZWHvnKda3dpsM&oh=00_AYDWYqM5tv-VIfZffJJTGodQwrzwJzPw4nqVxSB8EYhSXg&oe=6741F5E1" 
+                         class="card-img-top" alt="Dr. Juan Pablo" style="height: 550px; object-fit: cover;">
+                </div>
+            </div>
+        </main>
         <footer th:replace="~{layout/plantilla :: footer}"/>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
