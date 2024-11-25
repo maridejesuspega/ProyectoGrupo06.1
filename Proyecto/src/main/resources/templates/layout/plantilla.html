@@ -10,7 +10,27 @@
             <script src="../../static/js/rutinas.js" type="text/javascript"></script>
             <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
             <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <style>
+/* Cambia el color de fondo y texto al pasar el mouse */
+.nav-link:hover {
+    background-color: #9BBF63; /* Fondo verde */
+    color: #8C207A; /* Texto morado */
+    border-radius: 5px; /* Esquinas redondeadas */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Cambia el color del dropdown al pasar el mouse */
+.dropdown-item:hover {
+    background-color: #9BBF63; /* Fondo verde */
+    color: #8C207A; /* Texto morado */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+            </style>
+
     </head>
+
+
     <body style="background-color: #F2EDEB;">
         <!-- Encabezado -->
         <header th:fragment="header" class="header">
