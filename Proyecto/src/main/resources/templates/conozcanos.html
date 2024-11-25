@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns="http://www.w3.org/1999/xhtml">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Contacto - Clinica Veterinaria VidaAnimal</title>
+        <title>Conozcamonos - Clinica Veterinaria VidaAnimal</title>
     </head>
     <body class="bg-custom-light">
         <header th:replace="~{layout/plantilla :: header}"/>
@@ -10,7 +10,7 @@
         <h1 class="text-center mb-5">
 
             <img src="img/icono.png" alt="VidaAnimal" height="150">
-            <img src="../../static/img/icono.png" alt=""/>
+                <img src="../../static/img/icono.png" alt=""/>
 
         </h1>
         <main class="container my-5">
@@ -121,10 +121,11 @@
                             y ha participado en programas internacionales de formación en rehabilitación animal.</p>
                     </div>  
                 </div>
-               <div class="col-md-6">
-                   <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/368294171_18379123498018071_6424064180114823857_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=5xvJexv4J0oQ7kNvgEdBDbv&_nc_oc=AdjnYZAcj6R30jwLDVO8OBWHF9zF7W1CeGqzQImJa9tRHy-kkvFzHSXKTe5G7yjCi9Q&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=A_rtNAshAO7xD6vvUTMe_yk&oh=00_AYDI7nDs8TVWjTNldlLqc-KgqCHi6vjCV05UGsNDlOpN7A&oe=67496E61" alt="Dr. Juan Pablo" 
-                      class="card-img-top"  style="height: 550px; object-fit: cover;">
-                        <img src="../../static/img/Dr.Juan.jpg" alt=""/>
+                <div class="col-md-6">
+                    <img th:src="@{/img/Dr.Juan.jpg}" 
+                         alt="Dr. Juan Pablo" 
+                         class="card-img-top"  
+                         style="height: 550px; object-fit: cover;">
                 </div>
             </div>
         </main>
@@ -153,27 +154,27 @@
         </main>
         <div style="border-top: 3px dashed #9BBF63; margin: 3rem 0;"></div>
         <main class="container my-5">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Tatiana</h2>
-            <h5>Técnico en Asistencia Veterinaria y Estética Canina</h5>
-            <p class="card-text">Tatiana es nuestra experta en grooming y embellecimiento de mascotas. Su dedicación y pasión por el cuidado estético de los animales la han convertido en una pieza fundamental de nuestro equipo.</p>
-            <p class="card-text">Con un Técnico en Asistencia Veterinaria y Estética Canina, Tatiana cuenta con 2 años de experiencia en el manejo y cuidado de mascotas durante sus sesiones de estética. Es conocida por su habilidad para trabajar con perritos nerviosos o inquietos, logrando que cada experiencia sea agradable y libre de estrés para nuestros pequeños clientes.</p>
-            <div class="mb-4">
-                <h4><i class="bi bi-scissors"></i> Servicios de Grooming</h4>
-                <p>Entre sus especialidades destacan los cortes de pelo según raza, baños medicados y tratamientos de spa que dejan a las mascotas limpias, saludables y con un look impecable.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Tatiana</h2>
+                    <h5>Técnico en Asistencia Veterinaria y Estética Canina</h5>
+                    <p class="card-text">Tatiana es nuestra experta en grooming y embellecimiento de mascotas. Su dedicación y pasión por el cuidado estético de los animales la han convertido en una pieza fundamental de nuestro equipo.</p>
+                    <p class="card-text">Con un Técnico en Asistencia Veterinaria y Estética Canina, Tatiana cuenta con 2 años de experiencia en el manejo y cuidado de mascotas durante sus sesiones de estética. Es conocida por su habilidad para trabajar con perritos nerviosos o inquietos, logrando que cada experiencia sea agradable y libre de estrés para nuestros pequeños clientes.</p>
+                    <div class="mb-4">
+                        <h4><i class="bi bi-scissors"></i> Servicios de Grooming</h4>
+                        <p>Entre sus especialidades destacan los cortes de pelo según raza, baños medicados y tratamientos de spa que dejan a las mascotas limpias, saludables y con un look impecable.</p>
+                    </div>
+                    <div class="mb-4">
+                        <h4><i class="bi bi-heart"></i> Compromiso con el Bienestar</h4>
+                        <p>Además de la estética, Tatiana está capacitada para identificar signos tempranos de problemas dermatológicos durante las sesiones de grooming. Trabaja de la mano con nuestros veterinarios para asegurar el bienestar completo de cada mascota.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/319109852_595588582571511_4109228699990496357_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qinA01vidGUQ7kNvgEQM05T&_nc_oc=AdjwK4qxFS5iCTDhq0Kk-UKOHOKyas4VmVYCvtEtD6NFHRj01NVUl_8O6P1F94-kFYE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AzpysVe64BjwcvAVJQL8QAw&oh=00_AYAjlGWn7uK2Tz3EUAAgsBh6IFsRBdVDbfX7IBg-8ybysQ&oe=67497D7D"
+                         alt="Tatiana" class="card-img-top" style="height: 550px; object-fit: cover;">
+                </div>
             </div>
-            <div class="mb-4">
-                <h4><i class="bi bi-heart"></i> Compromiso con el Bienestar</h4>
-                <p>Además de la estética, Tatiana está capacitada para identificar signos tempranos de problemas dermatológicos durante las sesiones de grooming. Trabaja de la mano con nuestros veterinarios para asegurar el bienestar completo de cada mascota.</p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/319109852_595588582571511_4109228699990496357_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qinA01vidGUQ7kNvgEQM05T&_nc_oc=AdjwK4qxFS5iCTDhq0Kk-UKOHOKyas4VmVYCvtEtD6NFHRj01NVUl_8O6P1F94-kFYE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AzpysVe64BjwcvAVJQL8QAw&oh=00_AYAjlGWn7uK2Tz3EUAAgsBh6IFsRBdVDbfX7IBg-8ybysQ&oe=67497D7D"
-                 alt="Tatiana" class="card-img-top" style="height: 550px; object-fit: cover;">
-        </div>
-    </div>
-</main>
+        </main>
         <div style="border-top: 3px dashed #8C207A; margin: 3rem 0;"></div>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>
