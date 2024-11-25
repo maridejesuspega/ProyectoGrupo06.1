@@ -236,10 +236,13 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `contrasena` varchar(255) NOT NULL,
+  `ruta_imagen` varchar(255) DEFAULT NULL,
   `rol` enum('cliente','veterinario','administrador') NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`)

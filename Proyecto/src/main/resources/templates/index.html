@@ -5,30 +5,90 @@
         <title>Clínica Veterinaria VidaAnimal</title>
     </head>
     <body class="bg-custom-light">
-        <header th:replace="~{layout/plantilla :: header}"/>
-        <!-- Imagen de arriba con botones de iniciar sesion y registrarme -->
-        <section class="hero position-relative">
-            <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
-            <div style="background: url('https://www.zooplus.es/magazine/wp-content/uploads/2024/08/Ataxia-en-perros.jpeg') center/cover; height: 78vh;">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-md-6 text-white position-relative">
-                            <h1 class="display-4 fw-bold">
-                                <span style="color: #8C207A;">Vida</span>
-                                <span style="color: #9BBF63;">Animal</span>, nos dedicamos al cuidado integral de tus mascotas.
-                            </h1>
-                            <p class="lead">Ofrecemos servicios médicos veterinarios y productos especializados en nuestra farmacia, siempre buscando lo mejor para asegurar su salud y bienestar.</p>
-                            <div class="mt-4">
-                                <a href="/registro" class="btn btn-lg me-3" style="background-color: #8C207A; color: white;">Registrarse</a>
-                                <a href="/login" class="btn btn-lg" style="background-color: #9BBF63; color: white;">Iniciar sesión</a>
-                                
-                            </div>
-
+    <header th:replace="~{layout/plantilla :: header}"/>
+    <!-- Imagen de arriba con botones de iniciar sesion y registrarme -->
+    <section class="hero position-relative" id="hero-section">
+        <div class="overlay position-absolute w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+        <div id="hero-background" style="background: url('https://www.zooplus.es/magazine/wp-content/uploads/2024/08/Ataxia-en-perros.jpeg') center/cover; height: 78vh;">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-md-6 text-white position-relative">
+                        <h1 class="display-4 fw-bold">
+                            <span style="color: #8C207A;">Vida</span>
+                            <span style="color: #9BBF63;">Animal</span>, nos dedicamos al cuidado integral de tus mascotas.
+                        </h1>
+                        <p class="lead">Ofrecemos servicios médicos veterinarios y productos especializados en nuestra farmacia, siempre buscando lo mejor para asegurar su salud y bienestar.</p>
+                        <div class="mt-4">
+                            <a href="/registro" class="btn btn-lg me-3" style="background-color: #8C207A; color: white;">Registrarse</a>
+                            <a href="/login" class="btn btn-lg" style="background-color: #9BBF63; color: white;">Iniciar sesión</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- Indicadores (circulitos) debajo de la imagen -->
+        <div class="text-center mt-3" id="indicators" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10;">
+            <!-- Los círculos serán generados dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Script para cambiar la imagen de fondo automáticamente y manejar los botones -->
+    <script>
+        const images = [
+            'https://www.zooplus.es/magazine/wp-content/uploads/2024/08/Ataxia-en-perros.jpeg',
+            'https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/369898694_821021953361505_1762006390168306591_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=dwi16pJ87e4Q7kNvgEK_oxd&_nc_oc=AdgE_33jtMfcSohyuYiifIPJLvtBAEoi2_YvUXCvAUnuAbbKcr9AuOPj0WSQoVVqHsc&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=Aiz0xISa-ZGJiQ6jU_yyiDr&oh=00_AYB42zVcbnR-9__yjTxRVR0_ZcFpywZ0a6UhdsezgvOkCw&oe=6749EBB9',  
+            'https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/362224845_796261089170925_5455438789449913667_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jOIp76yvz14Q7kNvgHVTiW0&_nc_oc=AdgREC7UbmoOc7KjiYBHZv86W3qjClM5u8W2Hh_j1jFXU0FJizEyVAwy8ybIPXQ8t_U&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AREiqRCjVaen3mCq67T9sAv&oh=00_AYAhOTAXbJYRe7HbvOhokLaAwT4WWYJa-E3FSROnmTMbZQ&oe=6749F0C1',   
+            'https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/367432330_821021903361510_573732914135609234_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Dh7SctShsToQ7kNvgHye3PI&_nc_oc=Adj_Ao_gPa4wkzQAw2SOGdEu0tNUy0Z_4ctA5gPGh0wCphPszyO1uWPxb0dOMaDQnus&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AlcJQZpwu5TuJCSy_0kdcA8&oh=00_AYAuIGY9Fit7FXKPw2_7huoH11fIIwZIRsrG78T3NZtl8Q&oe=6749E3EC',
+            'https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/440950589_1019518546845177_6643906376408314060_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=QGFeQiCnZT8Q7kNvgHrf3hR&_nc_oc=AdiEoH6q9b38MMA138Iw9JYTc1EweB-lhWbs4YvsbC63yyQY3xq1pM5Wd0H-6mBUz6E&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=Amj3k6EOwdnAIkwI8067l5o&oh=00_AYBwlNx-PVYQ_2qZoI9JKiqmaM5DK6xhb_tcn5SRpRb2XQ&oe=674A7321'
+    
+        ];
+
+        let currentImageIndex = 0;
+
+        // Función para cambiar la imagen de fondo
+        function changeBackgroundImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('hero-background').style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            updateIndicators();
+        }
+
+        // Función para cambiar la imagen cuando se hace clic en un indicador
+        function goToImage(index) {
+            currentImageIndex = index;
+            document.getElementById('hero-background').style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            updateIndicators();
+        }
+
+        // Función para actualizar los indicadores
+        function updateIndicators() {
+            // Obtener el contenedor de los indicadores
+            const indicatorsContainer = document.getElementById('indicators');
+            // Limpiar los indicadores anteriores
+            indicatorsContainer.innerHTML = '';
+            // Crear los nuevos indicadores
+            images.forEach((image, index) => {
+                const indicator = document.createElement('span');
+                indicator.classList.add('indicator');
+                indicator.style.display = 'inline-block';
+                indicator.style.width = '10px';
+                indicator.style.height = '10px';
+                indicator.style.margin = '0 5px';
+                indicator.style.borderRadius = '50%';
+                indicator.style.backgroundColor = currentImageIndex === index ? '#fff' : '#888';
+                indicator.style.cursor = 'pointer';
+                indicator.onclick = () => goToImage(index); // Cambiar imagen al hacer clic
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        // Cambiar la imagen cada 5 segundos (5000 milisegundos)
+        setInterval(changeBackgroundImage, 5000);
+
+        // Inicializar los indicadores
+        updateIndicators();
+    </script>
+</body>
 
         <!-- Servicios y tienda -->
         <section class="services py-5">
