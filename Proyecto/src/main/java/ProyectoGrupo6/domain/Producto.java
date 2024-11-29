@@ -16,9 +16,20 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private double precio;
-    @Column(name = "cantidad")
-    private int existencias;
+    private int cantidad;
+    
+    @Column(name = "ruta_imagen")
     private String rutaImagen;
-    private boolean activo;
+    private String activo;
     private String categoria;
+    
+    // Método de conveniencia para verificar existencias
+    public boolean tieneExistencias() {
+        return this.cantidad > 0;
+    }
+    
+    // Método para obtener existencias
+    public int getExistencias() {
+        return this.cantidad;
+    }
 }

@@ -1,76 +1,108 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Tienda - Clínica Vida Animal</title>
+        <title>Tienda Vida Animal</title>
     </head>
-    <body style="background-color: #F2EDEB;">
+    <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         
-        <!-- Banner de la tienda -->
-        <section class="store-banner py-3">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <h1 class="display-4 fw-bold">
-                            <span style="color: #8C207A;">Tienda</span>
-                            <span style="color: #8C207A;">Vida</span>
-                            <span style="color: #9BBF63;">Animal</span>
-                        </h1>
-                        <p class="lead">Encuentra todo lo que necesitas para el cuidado y bienestar de tu mascota.</p>
-                    </div>
+        <div class="container mt-4">
+            <h1 class="text-center mb-4 text-custom-purple">Nuestra Tienda</h1>
+            
+            <!-- Barra de búsqueda -->
+            <div class="row mb-4">
+                <div class="col-md-6 mx-auto">
+                    <form th:action="@{/tienda}" method="get" class="d-flex">
+                        <input type="text" 
+                               name="busqueda" 
+                               class="form-control me-2" 
+                               placeholder="Buscar productos..."
+                               th:value="${busqueda}">
+                        <input type="hidden" 
+                               name="categoria" 
+                               th:value="${categoriaSeleccionada}">
+                        <button class="btn btn-custom-purple" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
-
-        <!-- Listado de productos -->
-        <section class="products py-3">
-            <div class="container">
-                <div class="row">
-                    <!-- Filtros -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: #8C207A;">Categorías</h5>
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item list-group-item-action">[[#{categoria.alimentos}]]</a>
-                                    <a href="#" class="list-group-item list-group-item-action">[[#{categoria.medicamentos}]]</a>
-                                    <a href="#" class="list-group-item list-group-item-action">[[#{categoria.accesorios}]]</a>
-                                    <a href="#" class="list-group-item list-group-item-action">[[#{categoria.higiene}]]</a>
-                                </div>
+            
+            <!-- Filtro de categorías -->
+            <div class="text-center mb-4">
+                <a th:href="@{/tienda(busqueda=${busqueda})}"
+                   class="btn me-2"
+                   th:classappend="${categoriaSeleccionada == null ? 'btn-custom-green' : 'btn-outline-secondary'}">
+                    Todos
+                </a>
+                <a th:each="cat : ${categorias}" 
+                   th:href="@{/tienda(categoria=${cat},busqueda=${busqueda})}"
+                   class="btn me-2"
+                   th:classappend="${cat == categoriaSeleccionada ? 'btn-custom-green' : 'btn-outline-secondary'}">
+                    [[${cat}]]
+                </a>
+            </div>
+            
+            <!-- Sección de productos -->
+            <div class="row">
+                <div th:each="producto : ${productos}" class="col-md-4 mb-4">
+                    <div class="card h-100 border-custom-green">
+                        <img th:src="${producto.rutaImagen}" class="card-img-top" alt="Imagen del producto" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-custom-purple" th:text="${producto.nombre}">Nombre del Producto</h5>
+                            <p class="card-text" th:text="${producto.descripcion}">Descripción del producto</p>
+                            <p class="card-text">
+                                <strong class="text-custom-green">Precio: </strong>
+                                <span th:text="'₡' + ${#numbers.formatDecimal(producto.precio, 0, 'COMMA', 2, 'POINT')}">Precio</span>
+                            </p>
+                            <p class="card-text">
+                                <strong class="text-custom-green">Disponibles: </strong>
+                                <span th:text="${producto.existencias}">Existencias</span>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <div class="d-grid gap-2">
+                                <button th:if="${producto.tieneExistencias()}" 
+                                        class="btn btn-custom-green"
+                                        onclick="agregarAlCarrito(this)"
+                                        th:data-id="${producto.idProducto}"
+                                        th:data-nombre="${producto.nombre}"
+                                        th:data-precio="${producto.precio}">
+                                    <i class="fas fa-shopping-cart"></i> Agregar al Carrito
+                                </button>
+                                <button th:unless="${producto.tieneExistencias()}" 
+                                        class="btn btn-secondary" 
+                                        disabled>
+                                    Agotado
+                                </button>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Productos -->
-                    <div class="col-md-9">
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}" class="col">
-                                <div class="card h-100">
-                                    <img th:src="${producto.rutaImagen}" class="card-img-top" alt="Producto" style="height: 200px; object-fit: cover;">
-                                    <div class="card-body">
-                                        <h5 class="card-title" th:text="${producto.nombre}">Nombre del producto</h5>
-                                        <p class="card-text" th:text="${producto.descripcion}">Descripción del producto</p>
-                                        <p class="card-text">
-                                            <strong>Precio: </strong>
-                                            <span class="text-success fw-bold">₡<span th:text="${#numbers.formatDecimal(producto.precio, 0, 'COMMA', 2, 'POINT')}">0.00</span></span>
-                                        </p>
-                                        <button class="btn w-100" style="background-color: #9BBF63; color: white;">
-                                            <i class="fas fa-shopping-cart me-2"></i>[[#{carrito.agregar}]]
-                                        </button>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-center p-2" th:if="${productos == null or productos.empty}">
-                                <span>[[#{producto.no.existencias}]]</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Mensaje cuando no hay productos -->
+            <div th:if="${#lists.isEmpty(productos)}" class="alert alert-info text-center">
+                No se encontraron productos que coincidan con tu búsqueda.
+            </div>
+        </div>
 
         <footer th:replace="~{layout/plantilla :: footer}"/>
+        
+        <!-- Script para el carrito -->
+        <script>
+            function agregarAlCarrito(button) {
+                const id = button.getAttribute('data-id');
+                const nombre = button.getAttribute('data-nombre');
+                const precio = button.getAttribute('data-precio');
+                
+                // Aquí implementaremos la lógica del carrito
+                console.log(`Agregando producto: ${nombre} (ID: ${id}) - Precio: ${precio}`);
+                // Por ahora solo mostramos una alerta
+                alert('Producto agregado al carrito');
+            }
+        </script>
     </body>
 </html>
