@@ -11,6 +11,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Armando Elizondo M
  */
+import ProyectoGrupo6.domain.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 public interface UsuarioDao extends JpaRepository<Usuario, Long> {
-    Usuario findByEmail(String email);
+    Usuario findByUsername(String username);
+    
+    Usuario findByUsernameAndPassword(String username, String Password);
+
+    Usuario findByUsernameOrCorreo(String username, String correo);
+
+    boolean existsByUsernameOrCorreo(String username, String correo);
 }

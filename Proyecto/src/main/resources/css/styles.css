@@ -1,0 +1,64 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 31 oct 2024, 7:44:31 p. m.
+    Author     : Maria
+*/
+/* Colores personalizados */
+.bg-custom-green {
+    background-color: #9BBF63 !important; /* Verde personalizado */
+    color: white; /* Contraste adecuado */
+}
+
+.text-custom-green {
+    color: #9BBF63 !important; /* Texto verde */
+}
+
+.bg-custom-purple {
+    background-color: #8C207A !important; /* Morado personalizado */
+    color: white; /* Contraste adecuado */
+}
+
+.text-custom-purple {
+    color: #8C207A !important; /* Texto morado */
+}
+
+/* Botones personalizados */
+.btn-custom-green {
+    background-color: #9BBF63 !important;
+    border-color: #9BBF63 !important;
+    color: white !important;
+}
+
+.btn-custom-purple {
+    background-color: #8C207A !important;
+    border-color: #8C207A !important;
+    color: white !important;
+}
+
+.btn-custom-green:hover,
+.btn-custom-purple:hover {
+    opacity: 0.8; /* Efecto hover */
+}
+
+/* Bordes personalizados */
+.border-custom-green {
+    border-color: #9BBF63 !important;
+}
+
+.border-custom-purple {
+    border-color: #8C207A !important;
+}
+/* Estilo del checkbox */
+.form-check-input {
+    accent-color: #8C207A; /* Color del checkbox morado */
+    transform: scale(1.2); /* Aumentar tamaño del checkbox */
+}
+
+/* Etiqueta del checkbox */
+.form-check-label {
+    font-size: 1rem;
+    color: #8C207A; /* Texto morado */
+}

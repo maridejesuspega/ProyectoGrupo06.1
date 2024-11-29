@@ -11,22 +11,26 @@
             <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
             <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
             <style>
-/* Cambia el color de fondo y texto al pasar el mouse */
+/* Cambia el color de fondo y texto al pasar el mouse con un efecto más fuerte */
 .nav-link:hover {
-    background-color: #9BBF63; /* Fondo verde */
+    background-color: rgba(155, 191, 99, 0.8); /* Fondo verde más intenso */
     color: #8C207A; /* Texto morado */
     border-radius: 5px; /* Esquinas redondeadas */
-    transition: all 0.3s ease; /* Transición suave */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más definida */
+    transition: all 0.6s ease; /* Transición suave */
 }
 
-/* Cambia el color del dropdown al pasar el mouse */
+/* Cambia el color del dropdown al pasar el mouse con un efecto más fuerte */
 .dropdown-item:hover {
-    background-color: #9BBF63; /* Fondo verde */
+    background-color: rgba(155, 191, 99, 0.8); /* Fondo verde más intenso */
     color: #8C207A; /* Texto morado */
     border-radius: 5px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más definida */
     transition: all 0.3s ease;
 }
             </style>
+
+
 
     </head>
 
@@ -36,11 +40,8 @@
         <header th:fragment="header" class="header">
             <nav class="navbar navbar-expand-lg" style="background-color: #8C207A; color: white;">
                 <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img src="img/icono.png" alt="VidaAnimal" height="40">
-                            <img src="../../static/img/icono.png" alt=""/>
-                    </a>
-                    <a th:href="@{/}" class="navbar-brand" style="color: #9BBF63;">[[#{aplicacion.titulo}]]</a>
+                  
+                    <a th:href="@{/}" class="navbar-brand" style="color: #9BBF63; font-weight: bold;">[[#{aplicacion.titulo}]]</a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
