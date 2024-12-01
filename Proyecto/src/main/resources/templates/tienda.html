@@ -9,7 +9,7 @@
         <header th:replace="~{layout/plantilla :: header}"/>
         
         <div class="container mt-4">
-            <h1 class="text-center mb-4 text-custom-purple">Nuestra Tienda</h1>
+            <h1 class="text-center mb-4 text-custom-purple"<span style="color: #9BBF63;"></span>Nuestra Tienda</h1>
             
             <!-- Barra de búsqueda -->
             <div class="row mb-4">
@@ -20,10 +20,12 @@
                                class="form-control me-2" 
                                placeholder="Buscar productos..."
                                th:value="${busqueda}">
+                            
                         <input type="hidden" 
                                name="categoria" 
                                th:value="${categoriaSeleccionada}">
                         <button class="btn btn-custom-purple" type="submit">
+                            
                             <i class="fas fa-search"></i>
                         </button>
                     </form>

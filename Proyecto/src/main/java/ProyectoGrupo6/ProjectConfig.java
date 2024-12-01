@@ -35,7 +35,6 @@ public class ProjectConfig implements WebMvcConfigurer {
         slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
     }
-
     /* localeChangeInterceptor se utiliza para crear un interceptor de cambio de idioma*/
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
@@ -68,35 +67,20 @@ public class ProjectConfig implements WebMvcConfigurer {
  }
 
 @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((request) -> request
-                .requestMatchers("/","/index","/errores/**",
-                        "/inicio/**","/servicios/**","/conozcanos/**",
-                        "/registro/**","/contacto/**","/tienda/**","/js/**","/webjars/**")
-                        .permitAll()
-                .requestMatchers(
-                        "/producto/nuevo","/producto/guardar",
-                        "/producto/modificar/**","/producto/eliminar/**",
-                        "/categoria/nuevo","/categoria/guardar",
-                        "/categoria/modificar/**","/categoria/eliminar/**",
-                        "/usuario/nuevo","/usuario/guardar",
-                        "/usuario/modificar/**","/usuario/eliminar/**",
-                        "/reportes/**"
-                ).hasRole("ADMIN")
-                .requestMatchers(
-                        "/producto/listado",
-                        "/categoria/listado",
-                        "/usuario/listado"
-                ).hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers("/facturar/carrito")
-                .hasRole("USER")
-                )
-                .formLogin((form) -> form
-                .loginPage("/login").permitAll())
-                .logout((logout) -> logout.permitAll());
-        return http.build();
-    }
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests((request) -> request
+            .anyRequest().permitAll() // Permitir acceso a todas las URL
+        )
+        .csrf().disable() // Opcional: desactiva CSRF para facilitar pruebas (no recomendado en producción)
+        .formLogin((form) -> form
+            .loginPage("/login").permitAll()
+        )
+        .logout((logout) -> logout.permitAll());
+    return http.build();
+}
+
+
 
      @Autowired
     private UserDetailsService userDetailsService;
