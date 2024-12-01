@@ -77,3 +77,28 @@
     font-size: 1rem;
     color: #8C207A;
 }
+.custom-button {
+    color: #8C207A;
+    border: 2px solid #8C207A;
+    background-color: transparent;
+    transition: all 0.3s ease; /* Animación suave */
+}
+
+.custom-button:hover {
+    background-color: #8C207A;
+    color: white; /* Cambiar texto a blanco */
+    border-color: #8C207A;
+}
+
+/* Estilo para cambiar el color de los botones outline-secondary al pasar el mouse */
+.btn-outline-secondary {
+    border-color: #9BBF63;
+    color: #9BBF63;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #9BBF63;
+    color: white;
+    border-color: #9BBF63;
+}

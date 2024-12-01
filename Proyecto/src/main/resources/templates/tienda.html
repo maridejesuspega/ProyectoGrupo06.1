@@ -31,7 +31,21 @@
                     </form>
                 </div>
             </div>
-            
+            <style>
+                /* Estilo para cambiar el color de los botones outline-secondary al pasar el mouse */
+.btn-outline-secondary {
+    border-color: #9BBF63;
+    color: #9BBF63;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #9BBF63;
+    color: white;
+    border-color: #9BBF63;
+}
+
+            </style>
             <!-- Filtro de categorías -->
             <div class="text-center mb-4">
                 <a th:href="@{/tienda(busqueda=${busqueda})}"
@@ -41,12 +55,13 @@
                 </a>
                 <a th:each="cat : ${categorias}" 
                    th:href="@{/tienda(categoria=${cat},busqueda=${busqueda})}"
-                   class="btn me-2"
-                   th:classappend="${cat == categoriaSeleccionada ? 'btn-custom-green' : 'btn-outline-secondary'}">
+                   class="btn me-2 btn-outline-secondary"
+                   th:classappend="${cat == categoriaSeleccionada ? 'btn-custom-green' : ''}">
                     [[${cat}]]
                 </a>
+
             </div>
-            
+
             <!-- Sección de productos -->
             <div class="row">
                 <div th:each="producto : ${productos}" class="col-md-4 mb-4">

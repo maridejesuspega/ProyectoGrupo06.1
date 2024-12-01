@@ -65,7 +65,8 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
  }
-
+    
+/* Activar cuando se va a estar en ambiente de producción*/
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
@@ -80,7 +81,20 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
     return http.build();
 }
 
+/* Activar cuando se va a estar en ambiente de desarrollo
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests((requests) -> requests
+            .anyRequest().permitAll() // Permitir acceso a todas las URLs sin autenticación
+        )
+        .csrf().disable() // Desactiva CSRF para pruebas (asegúrate de habilitarlo en producción)
+        .formLogin().disable() // Desactiva el formulario de inicio de sesión
+        .logout().disable(); // Desactiva el cierre de sesión
+    return http.build();
+}
 
+ */
 
      @Autowired
     private UserDetailsService userDetailsService;
