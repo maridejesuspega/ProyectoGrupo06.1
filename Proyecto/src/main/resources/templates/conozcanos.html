@@ -3,182 +3,202 @@
       xmlns="http://www.w3.org/1999/xhtml">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Conozcamonos - Clinica Veterinaria VidaAnimal</title>
-    </head>
-    <body class="bg-custom-light">
-        <header th:replace="~{layout/plantilla :: header}"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+                </head>
+                <body class="bg-custom-light">
+                    <header th:replace="~{layout/plantilla :: header}"/>
 
-        <h1 class="text-center mb-5">
+                    <h1 class="text-center mb-5">
 
-            <img src="img/icono.png" alt="VidaAnimal" height="150">
-                <img src="../../static/img/icono.png" alt=""/>
+                        <img src="img/icono.png" alt="VidaAnimal" class="img-fluid" style="height: 150px;">
+                    </h1>
+                    <!-- Historia y Valores -->
+                    <main class="container my-5">
+                        <div class="row g-4 align-items-stretch mb-5">
 
-        </h1>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <h2><span style="color: #8C207A;">Historia de la Clínica</h2>
+                            <!-- Historia de la vete-->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h2 class="card-title mb-4 text-center" style="color: #8C207A;">Historia de la Clínica</h2>
+                                        <div class="card-text">
+                                            <p class="text-justify">Nuestra clínica veterinaria abrió sus puertas en 2016 con el objetivo de brindar un espacio de confianza, cuidado y profesionalismo para cada mascota y su familia.</p>
 
-                    <p class="card-text">Nuestra clínica veterinaria abrió sus puertas en 2016 con el objetivo de brindar un espacio de confianza,
-                        cuidado y profesionalismo para cada mascota y su familia. </p>
-                    <p class="card-text">Inspirada en el amor por los animales y en el compromiso con su bienestar,
-                        la Dra. Diana Barboza Monge fundó la clínica para ofrecer un servicio integral que combine experiencia, tecnología y un enfoque humanitario.</p>
-                    <p class="card-text text-center"> Desde sus inicios, la clínica ha crecido en sus servicios y en su equipo profesional, permitiéndonos atender de manera especializada diversas
-                        necesidades de salud veterinaria, desde consultas generales hasta cirugías y tratamientos avanzados.</p>
-                    <p class="card-text text-center">A lo largo de los años, nos hemos
-                        consolidado como un lugar de referencia en la comunidad, comprometidos no solo con la atención médica de cada mascota, sino también
-                        con la educación de sus dueños, apoyando a nuestras familias en el cuidado y bienestar de sus compañeros.</p>
-                    <p class="card-text text-center">Con cada visita, renovamos nuestro compromiso de ofrecer un servicio de excelencia, basado en la compasión, la ética y la actualización continua, 
-                        asegurándonos de que cada mascota reciba la atención personalizada y de calidad que merece.</p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <h2><span style="color: #9BBF63;">Nuestros Valores</h2>
-                    <h5><span style="color: #8C207A;">Compasión:</h5>
-                    <p class="card-text text-center"> Nos preocupamos profundamente por cada mascota que atendemos, comprendiendo la importancia de
-                        su bienestar físico y emocional. Nuestro enfoque empático asegura que cada tratamiento se realice con sensibilidad y cuidado.</p>  
-                    <h5><span style="color: #9BBF63;">Excelencia:</h5>
-                    <p class="card-text text-center">Nos esforzamos por ofrecer un servicio veterinario de la más alta calidad, con atención a cada detalle y
-                        con una dedicación constante a la mejora continua. Nuestro objetivo es brindar resultados excepcionales en cada consulta, tratamiento y cirugía.</p>
-                    <h5><span style="color: #8C207A;">Ética Profesional:</h5>
-                    <p class="card-text text-center">Actuamos con integridad y responsabilidad en cada interacción, respetando siempre la confianza 
-                        que nuestros clientes depositan en nosotros. Valoramos la transparencia y honestidad, guiándonos por los más altos 
-                        estándares de ética veterinaria.</p>
-                    <h5><span style="color: #9BBF63;">Innovación:</h5>
-                    <p class="card-text text-center">Nos mantenemos actualizados en las últimas prácticas, tecnologías y avances en medicina veterinaria. 
-                        Esta dedicación a la formación y el aprendizaje continuo nos permite ofrecer tratamientos modernos y efectivos.</p>
+                                            <p class="text-justify">Inspirada en el amor por los animales y en el compromiso con su bienestar, la Dra. Diana Barboza Monge fundó la clínica para ofrecer un servicio integral que combine experiencia, tecnología y un enfoque humanitario.</p>
 
-                </div>
-            </div>
-        </main>
-        <div style="border-top: 3px dashed #9BBF63; margin: 3rem 0;"></div>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <h2><span style="color: #8C207A;">Visión</h2>
+                                            <p class="text-justify">Desde sus inicios, la clínica ha crecido en sus servicios y en su equipo profesional, permitiéndonos atender de manera especializada diversas necesidades de salud veterinaria, desde consultas generales hasta cirugías y tratamientos avanzados.</p>
 
-                    <p class="card-text">Ser reconocidos como la clínica veterinaria líder en nuestra zona, 
-                        distinguiéndonos por nuestro servicio personalizado, servicios especializados y uso de tecnología de 
-                        vanguardia para optimizar la salud y el 
-                        desempeño de cada animal, sea mascota o de granja.</p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <h2><span style="color: #9BBF63;">Misión</span></h2>
-                    <p class="card-text">Ser reconocidos como la clínica veterinaria líder en nuestra zona, 
-                        distinguiéndonos por nuestro servicio personalizado, servicios especializados y uso de tecnología de 
-                        vanguardia para optimizar la salud y el 
-                        desempeño de cada animal, sea mascota o de granja.</p>
-                </div>
-            </div>
-        </main> 
-        <div style="border-top: 3px dashed #8C207A; margin: 3rem 0;"></div>
-        <h2 class="text-center mb-5">
-            <span style="color: #8C207A;">Nuestro</span>
-            <span style="color: #9BBF63;">Equipo</span>
-        </h2>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Dra. Diana Barboza Monge</h2>
-                    <h5>Licenciada en Medicina y Cirugía Veterinaria</h5>
-                    <h6>CMV: 1818</h6>
-                    <p class="card-text">La Dra. Diana Barboza Monge fundó nuestra clínica veterinaria en 2016 con el compromiso de ofrecer un servicio de calidad en el cuidado de mascotas. Con una década de experiencia, se especializa en clínica y cirugía de tejidos blandos en perros y gatos, brindando una atención excepcional y personalizada para cada paciente.</p>
-                    <div class="mb-4">
-                        <h4><i class="bi bi-geo-alt-fill"></i> Experiencia y Especialización</h4>
-                        <h5><i class="bi bi-telephone-fill"></i> 10 Años de Experiencia en Clínica y Cirugía Veterinaria.</h5>
-                        <p>La Dra. Diana se ha destacado en la cirugía de tejidos blandos en mascotas, especialmente en perros y gatos, consolidando su conocimiento y habilidades para garantizar tratamientos seguros y eficaces.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5><i class="bi bi-telephone-fill"></i> Especialización en Dermatología Veterinaria</h5>
-                        <p>Comprometida con la salud de la piel de sus pacientes, cuenta con un diplomado en dermatología veterinaria del Centro de Estudios Avanzados en Medicina Veterinaria en México. Además, completó una pasantía Dermalatam de 200 horas en Cali, Colombia.</p>
-                    </div>  
-                </div>
+                                            <p class="text-justify">A lo largo de los años, nos hemos consolidado como un lugar de referencia en la comunidad, comprometidos no solo con la atención médica de cada mascota, sino también con la educación de sus dueños, apoyando a nuestras familias en el cuidado y bienestar de sus compañeros.</p>
 
-                <div class="col-md-6">
-                    <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/315744346_578340197629683_8763371961888226522_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=w55dFhcxiqYQ7kNvgEkXvvq&_nc_oc=AdjQ4JBzgJSW9K-8i31NP6MAtsw0Nljd0Qmc-XZ_V8T9D0tc6RA4mOZTudyVjBt2iM4&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AmFrtOOmAYxqmMPA8Gpx_Kf&oh=00_AYDi3sinfcspzV3uOLECktI-7m0qgknv0kP0OMKv8cIxLg&oe=6749AAF1" 
-                         class="card-img-top" alt="Dra. Diana Barboza" style="height: 550px; object-fit: cover;">
-                </div>
-            </div>
-        </main>
-        <div style="border-top: 3px dashed #9BBF63; margin: 3rem 0;"></div>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Dr. Juan Pablo Varela Rojas</h2>
-                    <h5>Licenciado en Medicina y Cirugía Veterinaria</h5>
-                    <p class="card-text">El Dr. Juan Pablo Varela Rojas es parte fundamental de nuestro equipo veterinario,
-                        comprometido con la excelencia en la atención de animales pequeños y grandes. Con más de 8 años de 
-                        experiencia, se especializa en medicina interna y cirugía ortopédica, proporcionando soluciones 
-                        innovadoras y personalizadas para cada caso.</p>
-                    <div class="mb-4">
-                        <h4><i class="bi bi-geo-alt-fill"></i> Experiencia y Especialización</h4>
-                        <h5><i class="bi bi-telephone-fill"></i> 8 Años de Experiencia en Medicina Veterinaria</h5>
-                        <p>El Dr. Juan Pablo ha dedicado su carrera a la atención integral de mascotas y animales de granja, 
-                            con un enfoque en procedimientos quirúrgicos avanzados y el manejo de enfermedades complejas.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5><i class="bi bi-telephone-fill"></i> Especialización en Cirugía Ortopédica</h5>
-                        <p>Con un enfoque en la recuperación funcional de sus pacientes, el Dr. Varela completó 
-                            una especialización en cirugía ortopédica en la Universidad Nacional Autónoma de México (UNAM)
-                            y ha participado en programas internacionales de formación en rehabilitación animal.</p>
-                    </div>  
-                </div>
-                <div class="col-md-6">
-                    <img th:src="@{/img/Dr.Juan.jpg}" 
-                         alt="Dr. Juan Pablo" 
-                         class="card-img-top"  
-                         style="height: 550px; object-fit: cover;">
-                </div>
-            </div>
-        </main>
-        <div style="border-top: 3px dashed #8C207A; margin: 3rem 0;"></div>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Pamela Barquero</h2>
-                    <h5>Técnico en Asistencia Veterinaria y Peluquería Canina</h5>
-                    <p class="card-text">Pamela Barquero es una colaboradora clave en nuestro equipo, con 6 años de experiencia en el ámbito veterinario. Su compromiso y dedicación se reflejan en el cuidado que brinda a cada uno de nuestros pacientes, trabajando en conjunto con la Dra. Diana en diversas áreas clínicas y quirúrgicas.</p>
-                    <div class="mb-4">
-                        <h4><i class="bi bi-geo-alt-fill"></i> Responsabilidades</h4>
-                        <p>Pamela asiste en consultas y procedimientos quirúrgicos, realiza exámenes de sangre utilizando nuestras avanzadas máquinas para hemogramas y química sanguínea, y proporciona un cuidado personalizado a cada mascota.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h5><i class="bi bi-telephone-fill"></i> Peluquería Canina</h5>
-                        <p>Con su especialización en peluquería canina, Pamela asegura que las mascotas no solo estén saludables, sino también presentables, ofreciendo un servicio integral para el bienestar animal.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/318430181_591327082997661_2009998234877923502_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=yRTVR5HAtBMQ7kNvgHjaNT5&_nc_oc=Adii2wGGPybaeJdp18j-1HMlOGC-opOAyO8tC3UdlP7iysQSAaSvowOAiT0NcXDvLIE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=Auz97HrD3_iX6gtT3l8voAY&oh=00_AYCA9oSFUqnuzJUhSbcn4fV2MiJqDTghJ8ka95bZPPIfZQ&oe=67497F9E"
-                         alt="Pamela Barquero" 
-                         class="card-img-top" style="height: 550px; object-fit: cover;">
-                </div>
-            </div>
-        </main>
-        <div style="border-top: 3px dashed #9BBF63; margin: 3rem 0;"></div>
-        <main class="container my-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Tatiana</h2>
-                    <h5>Técnico en Asistencia Veterinaria y Estética Canina</h5>
-                    <p class="card-text">Tatiana es nuestra experta en grooming y embellecimiento de mascotas. Su dedicación y pasión por el cuidado estético de los animales la han convertido en una pieza fundamental de nuestro equipo.</p>
-                    <p class="card-text">Con un Técnico en Asistencia Veterinaria y Estética Canina, Tatiana cuenta con 2 años de experiencia en el manejo y cuidado de mascotas durante sus sesiones de estética. Es conocida por su habilidad para trabajar con perritos nerviosos o inquietos, logrando que cada experiencia sea agradable y libre de estrés para nuestros pequeños clientes.</p>
-                    <div class="mb-4">
-                        <h4><i class="bi bi-scissors"></i> Servicios de Grooming</h4>
-                        <p>Entre sus especialidades destacan los cortes de pelo según raza, baños medicados y tratamientos de spa que dejan a las mascotas limpias, saludables y con un look impecable.</p>
-                    </div>
-                    <div class="mb-4">
-                        <h4><i class="bi bi-heart"></i> Compromiso con el Bienestar</h4>
-                        <p>Además de la estética, Tatiana está capacitada para identificar signos tempranos de problemas dermatológicos durante las sesiones de grooming. Trabaja de la mano con nuestros veterinarios para asegurar el bienestar completo de cada mascota.</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/319109852_595588582571511_4109228699990496357_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qinA01vidGUQ7kNvgEQM05T&_nc_oc=AdjwK4qxFS5iCTDhq0Kk-UKOHOKyas4VmVYCvtEtD6NFHRj01NVUl_8O6P1F94-kFYE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AzpysVe64BjwcvAVJQL8QAw&oh=00_AYAjlGWn7uK2Tz3EUAAgsBh6IFsRBdVDbfX7IBg-8ybysQ&oe=67497D7D"
-                         alt="Tatiana" class="card-img-top" style="height: 550px; object-fit: cover;">
-                </div>
-            </div>
-        </main>
-        <div style="border-top: 3px dashed #8C207A; margin: 3rem 0;"></div>
+                                            <p class="text-justify">Con cada visita, renovamos nuestro compromiso de ofrecer un servicio de excelencia, basado en la compasión, la ética y la actualización continua, asegurándonos de que cada mascota reciba la atención personalizada y de calidad que merece.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+                            <!--valoress de la vete-->
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body p-4">
+                                        <h2 class="card-title mb-4 text-center" style="color: #9BBF63;">Nuestros Valores</h2>
+                                        <div class="valores-content">
+                                            <div class="mb-4">
+                                                <h5 class="text-center" style="color: #8C207A;">Compasión</h5>
+                                                <p class="text-justify">Nos preocupamos profundamente por cada mascota que atendemos, comprendiendo la importancia de su bienestar físico y emocional.</p>
+                                            </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-         </body>
-</html>
+                                            <div class="mb-4">
+                                                <h5 class="text-center" style="color: #9BBF63;">Excelencia</h5>
+                                                <p class="text-justify">Nos esforzamos por ofrecer un servicio veterinario de la más alta calidad, con atención a cada detalle y dedicación constante.</p>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <h5 class="text-center" style="color: #8C207A;">Ética Profesional</h5>
+                                                <p class="text-justify">Actuamos con integridad y responsabilidad en cada interacción, respetando siempre la confianza de nuestros clientes.</p>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <h5 class="text-center" style="color: #9BBF63;">Innovación</h5>
+                                                <p class="text-justify">Nos mantenemos actualizados en las últimas prácticas y tecnologías en medicina veterinaria.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                    </main>
+
+
+                    <main class="container my-5">
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <h2><span style="color: #8C207A;">Visión</h2>
+                                <p class="card-text">Ser reconocidos como la clínica veterinaria líder en nuestra zona, 
+                                    distinguiéndonos por nuestro servicio personalizado, servicios especializados y uso de tecnología de 
+                                    vanguardia para optimizar la salud y el 
+                                    desempeño de cada animal, sea mascota o de granja.</p>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <h2><span style="color: #9BBF63;">Misión</span></h2>
+                                <p class="card-text">Ser reconocidos como la clínica veterinaria líder en nuestra zona, 
+                                    distinguiéndonos por nuestro servicio personalizado, servicios especializados y uso de tecnología de 
+                                    vanguardia para optimizar la salud y el 
+                                    desempeño de cada animal, sea mascota o de granja.</p>
+                            </div>
+                        </div>
+                    </main> 
+
+                    <h2 class="text-center mb-5">
+                        <span style="color: #8C207A;">Nuestro</span>
+                        <span style="color: #9BBF63;">Equipo</span>
+                    </h2>
+                    <main class="container my-5">
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <h2>Dra. Diana Barboza Monge</h2>
+                                <h5>Licenciada en Medicina y Cirugía Veterinaria</h5>
+                                <h6>CMV: 1818</h6>
+                                <p class="card-text">La Dra. Diana Barboza Monge fundó nuestra clínica veterinaria en 2016 con el compromiso de ofrecer un servicio de calidad en el cuidado de mascotas. Con una década de experiencia, se especializa en clínica y cirugía de tejidos blandos en perros y gatos, brindando una atención excepcional y personalizada para cada paciente.</p>
+                                <div class="mb-4">
+                                    <h4><i class="bi bi-geo-alt-fill"></i> Experiencia y Especialización</h4>
+                                    <h5><i class="bi bi-telephone-fill"></i> 10 Años de Experiencia en Clínica y Cirugía Veterinaria.</h5>
+                                    <p>La Dra. Diana se ha destacado en la cirugía de tejidos blandos en mascotas, especialmente en perros y gatos, consolidando su conocimiento y habilidades para garantizar tratamientos seguros y eficaces.</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h5><i class="bi bi-telephone-fill"></i> Especialización en Dermatología Veterinaria</h5>
+                                    <p>Comprometida con la salud de la piel de sus pacientes, cuenta con un diplomado en dermatología veterinaria del Centro de Estudios Avanzados en Medicina Veterinaria en México. Además, completó una pasantía Dermalatam de 200 horas en Cali, Colombia.</p>
+                                </div>  
+                            </div>
+                            <div class="col-md-6">
+                                <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/315744346_578340197629683_8763371961888226522_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=w55dFhcxiqYQ7kNvgEkXvvq&_nc_oc=AdjQ4JBzgJSW9K-8i31NP6MAtsw0Nljd0Qmc-XZ_V8T9D0tc6RA4mOZTudyVjBt2iM4&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AmFrtOOmAYxqmMPA8Gpx_Kf&oh=00_AYDi3sinfcspzV3uOLECktI-7m0qgknv0kP0OMKv8cIxLg&oe=6749AAF1" 
+                                     class="card-img-top" alt="Dra. Diana Barboza" style="height: 550px; object-fit: cover;">
+                            </div>
+                        </div>
+                    </main>
+                    <hr class="my-5" style="background-color: #9BBF63; height: 2px; opacity: 0.5;">
+                        <main class="container my-5">
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <h2>Dr. Juan Pablo Varela Rojas</h2>
+                                    <h5>Licenciado en Medicina y Cirugía Veterinaria</h5>
+                                    <p class="card-text">El Dr. Juan Pablo Varela Rojas es parte fundamental de nuestro equipo veterinario,
+                                        comprometido con la excelencia en la atención de animales pequeños y grandes. Con más de 8 años de 
+                                        experiencia, se especializa en medicina interna y cirugía ortopédica, proporcionando soluciones 
+                                        innovadoras y personalizadas para cada caso.</p>
+                                    <div class="mb-4">
+                                        <h4><i class="bi bi-geo-alt-fill"></i> Experiencia y Especialización</h4>
+                                        <h5><i class="bi bi-telephone-fill"></i> 8 Años de Experiencia en Medicina Veterinaria</h5>
+                                        <p>El Dr. Juan Pablo ha dedicado su carrera a la atención integral de mascotas y animales de granja, 
+                                            con un enfoque en procedimientos quirúrgicos avanzados y el manejo de enfermedades complejas.</p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5><i class="bi bi-telephone-fill"></i> Especialización en Cirugía Ortopédica</h5>
+                                        <p>Con un enfoque en la recuperación funcional de sus pacientes, el Dr. Varela completó 
+                                            una especialización en cirugía ortopédica en la Universidad Nacional Autónoma de México (UNAM)
+                                            y ha participado en programas internacionales de formación en rehabilitación animal.</p>
+                                    </div>  
+                                </div>
+                                <div class="col-md-6">
+                                    <img th:src="@{/img/Dr.Juan.jpg}" 
+                                         alt="Dr. Juan Pablo" 
+                                         class="card-img-top"  
+                                         style="height: 550px; object-fit: cover;">
+                                </div>
+                            </div>
+                        </main>
+                        <hr class="my-5" style="background-color: #8C207A; height: 2px; opacity: 0.5;">
+                            <main class="container my-5">
+                                <div class="row">
+                                    <div class="col-md-6 text-center">
+                                        <h2>Pamela Barquero</h2>
+                                        <h5>Técnico en Asistencia Veterinaria y Peluquería Canina</h5>
+                                        <p class="card-text">Pamela Barquero es una colaboradora clave en nuestro equipo, con 6 años de experiencia en el ámbito veterinario. Su compromiso y dedicación se reflejan en el cuidado que brinda a cada uno de nuestros pacientes, trabajando en conjunto con la Dra. Diana en diversas áreas clínicas y quirúrgicas.</p>
+                                        <div class="mb-4">
+                                            <h4><i class="bi bi-geo-alt-fill"></i> Responsabilidades</h4>
+                                            <p>Pamela asiste en consultas y procedimientos quirúrgicos, realiza exámenes de sangre utilizando nuestras avanzadas máquinas para hemogramas y química sanguínea, y proporciona un cuidado personalizado a cada mascota.</p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <h5><i class="bi bi-telephone-fill"></i> Peluquería Canina</h5>
+                                            <p>Con su especialización en peluquería canina, Pamela asegura que las mascotas no solo estén saludables, sino también presentables, ofreciendo un servicio integral para el bienestar animal.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/318430181_591327082997661_2009998234877923502_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=yRTVR5HAtBMQ7kNvgHjaNT5&_nc_oc=Adii2wGGPybaeJdp18j-1HMlOGC-opOAyO8tC3UdlP7iysQSAaSvowOAiT0NcXDvLIE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=Auz97HrD3_iX6gtT3l8voAY&oh=00_AYCA9oSFUqnuzJUhSbcn4fV2MiJqDTghJ8ka95bZPPIfZQ&oe=67497F9E"
+                                             alt="Pamela Barquero" 
+                                             class="card-img-top" style="height: 550px; object-fit: cover;">
+                                    </div>
+                                </div>
+                            </main>
+                            <hr class="my-5" style="background-color: #9BBF63; height: 2px; opacity: 0.5;">
+                                <main class="container my-5">
+                                    <div class="row">
+                                        <div class="col-md-6 text-center">
+                                            <h2>Tatiana</h2>
+                                            <h5>Técnico en Asistencia Veterinaria y Estética Canina</h5>
+                                            <p class="card-text">Tatiana es nuestra experta en grooming y embellecimiento de mascotas. Su dedicación y pasión por el cuidado estético de los animales la han convertido en una pieza fundamental de nuestro equipo.</p>
+                                            <p class="card-text">Con un Técnico en Asistencia Veterinaria y Estética Canina, Tatiana cuenta con 2 años de experiencia en el manejo y cuidado de mascotas durante sus sesiones de estética. Es conocida por su habilidad para trabajar con perritos nerviosos o inquietos, logrando que cada experiencia sea agradable y libre de estrés para nuestros pequeños clientes.</p>
+                                            <div class="mb-4">
+                                                <h4><i class="bi bi-scissors"></i> Servicios de Grooming</h4>
+                                                <p>Entre sus especialidades destacan los cortes de pelo según raza, baños medicados y tratamientos de spa que dejan a las mascotas limpias, saludables y con un look impecable.</p>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h4><i class="bi bi-heart"></i> Compromiso con el Bienestar</h4>
+                                                <p>Además de la estética, Tatiana está capacitada para identificar signos tempranos de problemas dermatológicos durante las sesiones de grooming. Trabaja de la mano con nuestros veterinarios para asegurar el bienestar completo de cada mascota.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="https://scontent.fsjo6-1.fna.fbcdn.net/v/t39.30808-6/319109852_595588582571511_4109228699990496357_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qinA01vidGUQ7kNvgEQM05T&_nc_oc=AdjwK4qxFS5iCTDhq0Kk-UKOHOKyas4VmVYCvtEtD6NFHRj01NVUl_8O6P1F94-kFYE&_nc_zt=23&_nc_ht=scontent.fsjo6-1.fna&_nc_gid=AzpysVe64BjwcvAVJQL8QAw&oh=00_AYAjlGWn7uK2Tz3EUAAgsBh6IFsRBdVDbfX7IBg-8ybysQ&oe=67497D7D"
+                                                 alt="Tatiana" class="card-img-top" style="height: 550px; object-fit: cover;">
+                                        </div>
+                                    </div>
+                                </main>
+                                <hr class="my-5" style="background-color: #8C207A; height: 2px; opacity: 0.5;">
+
+                                    <footer th:replace="~{layout/plantilla :: footer}"/>
+
+                                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                                    </body>
+                                    </html>

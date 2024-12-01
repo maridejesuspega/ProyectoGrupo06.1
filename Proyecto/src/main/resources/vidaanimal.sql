@@ -18,6 +18,31 @@ USE `vida_animal`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categoria`
+--
+
+DROP TABLE IF EXISTS `categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categoria` (
+  `id_categoria` bigint NOT NULL AUTO_INCREMENT,
+  `activo` bit(1) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `ruta_imagen` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_categoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categoria`
+--
+
+LOCK TABLES `categoria` WRITE;
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `citas`
 --
 
@@ -206,9 +231,9 @@ DROP TABLE IF EXISTS `productos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
   `id_producto` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` text,
-  `precio` decimal(10,2) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `precio` double NOT NULL,
   `cantidad` int NOT NULL,
   `ruta_imagen` varchar(255) DEFAULT NULL,
   `activo` varchar(255) DEFAULT NULL,
@@ -223,8 +248,66 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Royal Canin Adult','Alimento premium para perros adultos',25000.00,50,'https://static.miscota.com/media/1/photos/products/007605/RC-VET-DRY-DogAD-MV-1-es-ES-62fcc35d65959_g.jpg','1','Alimentos'),(2,'Antipulgas Nexgard','Tratamiento mensual contra pulgas y garrapatas',15000.00,30,'https://acdn.mitiendanube.com/stores/830/783/products/n-41a101-05aefb9b7cc8427d5a16757810847077-640-0.jpg','1','Medicamentos'),(3,'Collar ajustable','Collar de nylon resistente para perros',8000.00,100,'https://www.unimart.com/cdn/shop/files/AksiPetitCollarAjustableparaPerroPetit_TallaS_1024x.jpg?v=1712031036','1','Accesorios'),(4,'Shampoo Premium','Shampoo hipoalergénico para mascotas',12000.00,40,'https://www.zooplus.es/magazine/wp-content/uploads/2020/08/productos-de-higiene-para-perros.jpeg','1','Higiene');
+INSERT INTO `productos` VALUES (1,'Royal Canin Adult','Alimento premium para perros adultos',25000,50,'https://static.miscota.com/media/1/photos/products/007605/RC-VET-DRY-DogAD-MV-1-es-ES-62fcc35d65959_g.jpg','1','Alimentos'),(2,'Antipulgas Nexgard','Tratamiento mensual contra pulgas y garrapatas',15000,30,'https://acdn.mitiendanube.com/stores/830/783/products/n-41a101-05aefb9b7cc8427d5a16757810847077-640-0.jpg','1','Medicamentos'),(3,'Collar ajustable','Collar de nylon resistente para perros',8000,100,'https://www.unimart.com/cdn/shop/files/AksiPetitCollarAjustableparaPerroPetit_TallaS_1024x.jpg?v=1712031036','1','Accesorios'),(4,'Shampoo Premium','Shampoo hipoalergénico para mascotas',12000,40,'https://www.zooplus.es/magazine/wp-content/uploads/2020/08/productos-de-higiene-para-perros.jpeg','1','Higiene');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rol`
+--
+
+DROP TABLE IF EXISTS `rol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rol` (
+  `id_rol` bigint NOT NULL AUTO_INCREMENT,
+  `id_usuario` bigint DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_rol`),
+  KEY `FKj025mxj48yf0q7dlj2xds71fd` (`id_usuario`),
+  CONSTRAINT `FKj025mxj48yf0q7dlj2xds71fd` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rol`
+--
+
+LOCK TABLES `rol` WRITE;
+/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
+INSERT INTO `rol` VALUES (1,1,'ROLE_USER');
+/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `id_usuario` bigint NOT NULL AUTO_INCREMENT,
+  `activo` bit(1) NOT NULL,
+  `apellidos` varchar(255) DEFAULT NULL,
+  `correo` varchar(255) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `ruta_imagen` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,_binary '\0','Peña Garcia','mariadejesuspega@gmail.com','María ','wGNE-_ZI7bdm6Eb8rDt9MJzX1c1O2eI1BXuPghfX',NULL,NULL,'maria');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -236,13 +319,10 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `contrasena` varchar(255) NOT NULL,
-  `ruta_imagen` varchar(255) DEFAULT NULL,
   `rol` enum('cliente','veterinario','administrador') NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`)
@@ -293,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-10 20:11:21
+-- Dump completed on 2024-12-01 15:50:03
