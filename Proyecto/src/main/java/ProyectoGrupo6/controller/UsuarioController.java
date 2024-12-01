@@ -47,14 +47,14 @@ public class UsuarioController {
     public String usuarioGuardar(Usuario usuario,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
-            usuarioService.save(usuario,false);
+            usuarioService.save(usuario, false);
             usuario.setRutaImagen(
                     firebaseStorageService.cargaImagen(
                             imagenFile,
                             "usuario",
                             usuario.getIdUsuario()));
         }
-        usuarioService.save(usuario,true);
+        usuarioService.save(usuario, true);
         return "redirect:/usuario/listado";
     }
 
@@ -71,4 +71,3 @@ public class UsuarioController {
         return "/usuario/modifica";
     }
 }
-
