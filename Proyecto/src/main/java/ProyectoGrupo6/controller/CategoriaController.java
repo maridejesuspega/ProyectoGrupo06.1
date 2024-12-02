@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ProyectoGrupo6.controller;
 
 import ProyectoGrupo6.domain.Categoria;
@@ -10,10 +6,7 @@ import ProyectoGrupo6.service.impl.FirebaseStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -22,6 +15,9 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
+
+    @Autowired
+    private FirebaseStorageServiceImpl firebaseStorageService;
 
     @GetMapping("/listado")
     public String listado(Model model) {
@@ -36,19 +32,13 @@ public class CategoriaController {
         return "/categoria/modificar";
     }
 
-    @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
-
     @PostMapping("/guardar")
-    public String categoriaGuardar(Categoria categoria,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+    public String categoriaGuardar(Categoria categoria, @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             categoriaService.save(categoria);
             categoria.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile,
-                            "categoria",
-                            categoria.getIdCategoria()));
+                firebaseStorageService.cargaImagen(imagenFile, "categoria", categoria.getIdCategoria())
+            );
         }
         categoriaService.save(categoria);
         return "redirect:/categoria/listado";

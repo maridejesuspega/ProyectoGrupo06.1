@@ -25,5 +25,4 @@ public class Categoria {
         this.activo = activo;
         this.rutaImagen = rutaImagen;
     }
-
 }
