@@ -24,9 +24,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
+
     /* Los siguientes métodos son para incorporar el tema de internacionalización en el proyecto */
-    
-    /* localeResolver se utiliza para crear una sesión de cambio de idioma*/
+
+ /* localeResolver se utiliza para crear una sesión de cambio de idioma*/
     @Bean
     public LocaleResolver localeResolver() {
         var slr = new SessionLocaleResolver();
@@ -35,6 +36,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
     }
+
     /* localeChangeInterceptor se utiliza para crear un interceptor de cambio de idioma*/
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
@@ -51,12 +53,12 @@ public class ProjectConfig implements WebMvcConfigurer {
     //Bean para poder acceder a los Messages.properties en código...
     @Bean("messageSource")
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource= new ResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-    
+
     /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -64,39 +66,37 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
- }
-    
-/* Activar cuando se va a estar en ambiente de producción*/
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .authorizeHttpRequests((request) -> request
-            .anyRequest().permitAll() // Permitir acceso a todas las URL
-        )
-        .csrf().disable() // Opcional: desactiva CSRF para facilitar pruebas (no recomendado en producción)
-        .formLogin((form) -> form
-            .loginPage("/login").permitAll()
-        )
-        .logout((logout) -> logout.permitAll());
-    return http.build();
-}
+    }
 
-/* Activar cuando se va a estar en ambiente de desarrollo
-@Bean
-public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http
-        .authorizeHttpRequests((requests) -> requests
-            .anyRequest().permitAll() // Permitir acceso a todas las URLs sin autenticación
-        )
-        .csrf().disable() // Desactiva CSRF para pruebas (asegúrate de habilitarlo en producción)
-        .formLogin().disable() // Desactiva el formulario de inicio de sesión
-        .logout().disable(); // Desactiva el cierre de sesión
-    return http.build();
-}
+    /* Activar cuando se va a estar en ambiente de producción*/
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((request) -> request
+                .anyRequest().permitAll() // Permitir acceso a todas las URL
+                )
+                .csrf().disable() // Opcional: desactiva CSRF para facilitar pruebas (no recomendado en producción)
+                .formLogin((form) -> form
+                .loginPage("/login").permitAll()
+                )
+                .logout((logout) -> logout.permitAll());
+        return http.build();
+    }
 
- */
 
-     @Autowired
+    /* Activar cuando se va a estar en ambiente de desarrollo
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests((requests) -> requests
+                .anyRequest().permitAll() // Permitir acceso a todas las URLs sin autenticación
+                )
+                .csrf().disable() // Desactiva CSRF para pruebas (asegúrate de habilitarlo en producción)
+                .formLogin().disable() // Desactiva el formulario de inicio de sesión
+                .logout((logout) -> logout.permitAll());
+        return http.build();
+    }*/
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Autowired
