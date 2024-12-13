@@ -23,12 +23,18 @@ public class Producto {
     private String activo;
     private String categoria;
     
-    // Método de conveniencia para verificar existencias
+    public Producto() {
+        // Default constructor
+    }
+    
+    public Producto(Long idProducto) {
+        this.idProducto = idProducto;
+    }
+    
     public boolean tieneExistencias() {
         return this.cantidad > 0;
     }
     
-    // Método para obtener existencias
     public int getExistencias() {
         return this.cantidad;
     }
