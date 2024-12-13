@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+    <head th:fragment="head">
+        <title>Clinica Vida Animal</title>
+        <meta charset="UTF-8">
+            <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+            <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script src="../../static/js/rutinas.js" type="text/javascript"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+            <style>
+/* Cambia el color de fondo y texto al pasar el mouse con un efecto más fuerte */
+.nav-link:hover {
+    background-color: rgba(155, 191, 99, 0.8); /* Fondo verde más intenso */
+    color: #8C207A; /* Texto morado */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más definida */
+    transition: all 0.6s ease; /* Transición suave */
+}
+
+/* Cambia el color del dropdown al pasar el mouse con un efecto más fuerte */
+.dropdown-item:hover {
+    background-color: rgba(155, 191, 99, 0.8); /* Fondo verde más intenso */
+    color: #8C207A; /* Texto morado */
+    border-radius: 5px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más definida */
+    transition: all 0.3s ease;
+}
+            </style>
+
+
+
+    </head>
+
+
+    <body style="background-color: #F2EDEB;">
+        <!-- Encabezado -->
+        <header th:fragment="header" class="header">
+            <nav class="navbar navbar-expand-lg" style="background-color: #8C207A; color: white;">
+                <div class="container">
+                  
+                    <a th:href="@{/}" class="navbar-brand" style="color: #9BBF63; font-weight: bold;">[[#{aplicacion.titulo}]]</a>
+                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/inicio}">[[#{plantilla.inicio}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/servicios}">[[#{plantilla.servicios}]]</a></li>
+                            <!--<li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/agendar}">[[#{plantilla.agendarCita}]]</a></li>-->
+                            <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/contacto}">[[#{plantilla.contacto}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/tienda}">[[#{plantilla.suTienda}]]</a></li>
+                            <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/conozcanos}">[[#{plantilla.conozcanos}]]</a></li>
+
+                                       </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{plantilla.idioma}]]</a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <li><a class="dropdown-item text-white" th:href="@{/(lang=es)}">ES</a></li>
+                                    <li><a class="dropdown-item text-white" th:href="@{/(lang=en)}">EN</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div>
+                            <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
+                                <li class="nav-item px-2">
+                                    <a class="nav-menu-link nav-link" th:href="@{/login}">
+                                        <i class='fas fa-sign-in-alt'></i>
+                                    </a>
+                                </li>                            
+                            </ul>
+                            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                                <li class="nav-item text-white my-auto">
+                                    <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle"/>
+                                    <span sec:authentication='name'>Santi</span>
+                                </li>
+                                <li class="nav-item my-auto">
+                                    <form method="post" th:action="@{/logout}">
+                                        <button class="btn btn-dark">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                        </button>
+                                    </form>
+                                </li>                            
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>            
+        </header>
+
+        <!-- Pie -->
+        <footer th:fragment="footer" class="mt-5" style="background-color: #8C207A; color: white;">
+            <div class="container py-3"> <!-- Ajustado de py-5 a py-3 -->
+                <!-- Steps Section -->
+                <div class="row text-center mb-2"> <!-- Ajustado de mb-4 a mb-2 -->
+                    <div class="col-md-4 mb-2"> <!-- Ajustado de mb-4 a mb-2 -->
+                        <div class="p-2"> <!-- Ajustado de p-3 a p-2 -->
+                            <i class="fas fa-calendar-check fa-2x mb-2"></i> <!-- Cambiado fa-3x a fa-2x y mb-3 a mb-2 -->
+                            <h5 class="fw-bold">Agenda tu Cita</h5>
+                            <p class="mb-0">Programa una consulta con nuestros especialistas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <div class="p-2">
+                            <i class="fas fa-stethoscope fa-2x mb-2"></i> <!-- Cambiado fa-3x a fa-2x y mb-3 a mb-2 -->
+                            <h5 class="fw-bold">Consulta Veterinaria</h5>
+                            <p class="mb-0">Atención profesional para tu mascota</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-2">
+                        <div class="p-2">
+                            <i class="fas fa-heart fa-2x mb-2"></i> <!-- Cambiado fa-3x a fa-2x y mb-3 a mb-2 -->
+                            <h5 class="fw-bold">Cuidado Continuo</h5>
+                            <p class="mb-0">Seguimiento y atención personalizada</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-light my-2"> <!-- Ajustado de my-4 a my-2 -->
+
+                    <!-- Copyright -->
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="mb-0">&COPY; [[#{plantilla.derechos}]]</p>
+                        </div>  `
+                    </div>
+            </div>
+        </footer>
+    </body>
+</html>

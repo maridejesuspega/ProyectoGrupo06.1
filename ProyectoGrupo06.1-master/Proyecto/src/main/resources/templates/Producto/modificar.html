@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Modificar Producto</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <main class="flex-grow-1">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-lg">
+                            <div class="card-header text-white" style="background-color: #9BBF63;">
+                                <h2 class="mb-0" th:text="${producto.idProducto == null ? 'Nuevo Producto' : 'Modificar Producto'}"></h2>
+                            </div>
+
+                            <div class="card-body">
+                                <form th:action="@{/producto/guardar}"
+                                      method="POST"
+                                      th:object="${producto}"
+                                      enctype="multipart/form-data"
+                                      class="needs-validation"
+                                      novalidate>
+
+                                    <input type="hidden" th:field="*{idProducto}"/>
+                                    <input type="hidden" th:field="*{rutaImagen}"/>
+
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="nombre"
+                                               th:field="*{nombre}"
+                                               required/>
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese el nombre del producto
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label">Descripción</label>
+                                        <textarea class="form-control"
+                                                  id="descripcion"
+                                                  th:field="*{descripcion}"
+                                                  required></textarea>
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese una descripción
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="precio" class="form-label">Precio</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₡</span>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="precio"
+                                                   th:field="*{precio}"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required/>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese un precio válido
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="cantidad" class="form-label">Existencias</label>
+                                        <input type="number"
+                                               class="form-control"
+                                               id="cantidad"
+                                               th:field="*{cantidad}"
+                                               min="0"
+                                               required/>
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese la cantidad de existencias
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="categoria" class="form-label">Categoría</label>
+                                        <select class="form-select"
+                                                id="categoria"
+                                                th:field="*{categoria}"
+                                                required>
+                                            <option value="">Seleccione una categoría</option>
+                                            <option th:each="cat : ${categorias}"
+                                                    th:value="${cat.descripcion}"
+                                                    th:text="${cat.descripcion}">
+                                                Categoría
+                                            </option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Por favor seleccione una categoría
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="imagenFile" class="form-label">Imagen</label>
+                                        <input type="file"
+                                               class="form-control"
+                                               id="imagenFile"
+                                               name="imagenFile"
+                                               accept="image/*"/>
+                                        <div class="form-text">
+                                            Seleccione una imagen para el producto (opcional)
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a th:href="@{/producto/listado}" class="btn btn-secondary">
+                                            <i class="fas fa-arrow-left"></i> Volver
+                                        </a>
+                                        <button type="submit" class="btn" style="background-color: #9BBF63; color: white;">
+                                            <i class="fas fa-save"></i> Guardar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}" class="mt-auto"></footer>
+
+        <script>
+            // Form validation
+            (function () {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+                Array.prototype.slice.call(forms)
+                    .forEach(function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })()
+        </script>
+    </body>
+</html>

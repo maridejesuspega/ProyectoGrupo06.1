@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Contacto - Clinica Veterinaria VidaAnimal</title>
+    </head>
+    <body class="bg-custom-light">
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <main class="container my-5">
+            <!-- Información de Contacto y Formulario -->
+            <div class="row g-4 mb-5">
+                <!-- Columna de Información -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4" style="color: #8C207A;">Información de Contacto</h2>
+                            <p class="lead mb-4">
+                                Vida Animal es una empresa enfocada en velar por la buena salud de todos los animales, brindando un servicio de calidad y un excelente surtido en productos.
+                            </p>
+
+                            <div class="contact-info">
+                                <div class="mb-4">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-geo-alt-fill" style="color: #9BBF63;"></i>
+                                        <span>Ubicaciones</span>
+                                    </h5>
+                                    <div class="ms-4">
+                                        <h6 class="mb-2">Turrialba</h6>
+                                        <p class="mb-3">Frente a farmacia Sucre (El Valle), diagonal al hotel Wagelia</p>
+                                        <h6 class="mb-2">Santa Teresita de Turrialba</h6>
+                                        <p>Contiguo a Torres del I.C.E.</p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-telephone-fill" style="color: #9BBF63;"></i>
+                                        <span>Teléfonos</span>
+                                    </h5>
+                                    <div class="ms-4">
+                                        <p class="mb-1">Santa Teresita: <a href="tel:+50625590202" class="text-decoration-none">+506 2559-0202</a></p>
+                                        <p class="mb-1">Turrialba: <a href="tel:+50625564502" class="text-decoration-none">+506 2556-4502</a></p>
+                                        <p>WhatsApp: <a href="https://wa.me/50686570777" class="text-decoration-none" target="_blank">+506 8657-0777</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-envelope-fill" style="color: #9BBF63;"></i>
+                                        <span>Email</span>
+                                    </h5>
+                                    <div class="ms-4">
+                                        <p><a href="mailto:diana-b-14@vidaanimal.com" class="text-decoration-none">diana-b-14@vidaanimal.com</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-clock-fill" style="color: #9BBF63;"></i>
+                                        <span>Horario de Atención</span>
+                                    </h5>
+                                    <div class="ms-4">
+                                        <h6 class="mb-2">Clínica</h6>
+                                        <p class="mb-3">Lunes a Sábado: 9:00 AM - 5:30 PM</p>
+                                        <h6 class="mb-2">Farmacia</h6>
+                                        <p>Lunes a Sábado: 7:30 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna del Formulario -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4" style="color: #9BBF63;">Envíanos un Mensaje</h2>
+                            <form th:action="@{/contacto}" method="post" class="contact-form">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="asunto" class="form-label">Asunto</label>
+                                    <input type="text" class="form-control" id="asunto" name="asunto" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn w-100" style="background-color: #9BBF63; color: white;">
+                                    Enviar Mensaje
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redes Sociales y Mapa -->
+            <div class="row g-4">
+                <!-- Redes Sociales -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4" style="color: #8C207A;">Síguenos en Redes Sociales</h2>
+                            <div class="d-flex flex-column gap-3">
+                                <a href="https://www.facebook.com/clinicayfarmaciavidaanimal" 
+                                   class="btn btn-lg d-flex align-items-center gap-3" 
+                                   style="background-color: #1877f2; color: white;"
+                                   target="_blank">
+                                    <i class="bi bi-facebook fs-4"></i>
+                                    <div class="text-start">
+                                        <div class="fw-bold">Facebook</div>
+                                        <small>Vida Animal</small>
+                                    </div>
+                                </a>
+
+                                <a href="https://www.instagram.com/vida_animal_vet/" 
+                                   class="btn btn-lg d-flex align-items-center gap-3" 
+                                   style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white;"
+                                   target="_blank">
+                                    <i class="bi bi-instagram fs-4"></i>
+                                    <div class="text-start">
+                                        <div class="fw-bold">Instagram</div>
+                                        <small>@vida_animal_vet</small>
+                                    </div>
+                                </a>
+
+                                <a href="https://wa.me/50686570777" 
+                                   class="btn btn-lg d-flex align-items-center gap-3" 
+                                   style="background-color: #25D366; color: white;"
+                                   target="_blank">
+                                    <i class="bi bi-whatsapp fs-4"></i>
+                                    <div class="text-start">
+                                        <div class="fw-bold">WhatsApp</div>
+                                        <small>+506 8657-0777</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="card-title mb-4" style="color: #9BBF63;">Nuestra Ubicación</h2>
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.3506270069142!2d-83.68785342466794!3d9.904727274666172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0d69977bedebd%3A0x220a24ea5997d7ba!2sVeterinaria%20Vida%20Animal!5e0!3m2!1ses-419!2scr!4v1732935583256!5m2!1ses-419!2scr" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        class="rounded"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

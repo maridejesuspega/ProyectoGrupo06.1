@@ -1,0 +1,104 @@
+/* Colores personalizados */
+.bg-custom-green {
+    background-color: #9BBF63 !important;
+    color: white !important;
+}
+
+.text-custom-green {
+    color: #9BBF63 !important;
+}
+
+.bg-custom-purple {
+    background-color: #8C207A !important;
+    color: white !important;
+}
+
+.text-custom-purple {
+    color: #8C207A !important;
+}
+
+/* Botones personalizados */
+.btn-custom-green {
+    background-color: #9BBF63 !important;
+    border-color: #9BBF63 !important;
+    color: white !important;
+}
+
+.btn-custom-purple {
+    background-color: #8C207A !important;
+    border-color: #8C207A !important;
+    color: white !important;
+}
+
+.btn-custom-green:hover,
+.btn-custom-purple:hover {
+    opacity: 0.8;
+}
+
+/* Botones de filtrado */
+.filter-btn {
+    background-color: transparent;
+    color: #9BBF63;
+    border: 2px solid #9BBF63;
+    margin: 0 5px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #9BBF63;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-btn.active {
+    background-color: #9BBF63;
+    color: white;
+}
+
+/* Bordes personalizados */
+.border-custom-green {
+    border-color: #9BBF63 !important;
+}
+
+.border-custom-purple {
+    border-color: #8C207A !important;
+}
+
+/* Estilo del checkbox */
+.form-check-input {
+    accent-color: #8C207A;
+    transform: scale(1.2);
+}
+
+/* Etiqueta del checkbox */
+.form-check-label {
+    font-size: 1rem;
+    color: #8C207A;
+}
+.custom-button {
+    color: #8C207A;
+    border: 2px solid #8C207A;
+    background-color: transparent;
+    transition: all 0.3s ease; /* Animación suave */
+}
+
+.custom-button:hover {
+    background-color: #8C207A;
+    color: white; /* Cambiar texto a blanco */
+    border-color: #8C207A;
+}
+
+/* Estilo para cambiar el color de los botones outline-secondary al pasar el mouse */
+.btn-outline-secondary {
+    border-color: #9BBF63;
+    color: #9BBF63;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #9BBF63;
+    color: white;
+    border-color: #9BBF63;
+}

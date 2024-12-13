@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Modificar Categoría</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <main class="flex-grow-1">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-lg">
+                            <div class="card-header text-white" style="background-color: #9BBF63;">
+                                <h2 class="mb-0" th:text="${categoria.idCategoria == null ? 'Nueva Categoría' : 'Modificar Categoría'}"></h2>
+                            </div>
+
+                            <div class="card-body">
+                                <form th:action="@{/categoria/guardar}"
+                                      method="POST"
+                                      th:object="${categoria}"
+                                      enctype="multipart/form-data">
+
+                                    <input type="hidden" th:field="*{idCategoria}"/>
+                                    <input type="hidden" th:field="*{rutaImagen}"/>
+
+                                    <div class="mb-3">
+                                        <label for="descripcion" class="form-label">Descripción</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="descripcion"
+                                               th:field="*{descripcion}"
+                                               required/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="activo" class="form-label">Estado</label>
+                                        <select class="form-select" id="activo" th:field="*{activo}">
+                                            <option th:value="true">Activo</option>
+                                            <option th:value="false">Inactivo</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="imagenFile" class="form-label">Imagen</label>
+                                        <input type="file"
+                                               class="form-control"
+                                               id="imagenFile"
+                                               name="imagenFile"
+                                               accept="image/*"/>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a th:href="@{/categoria/listado}" class="btn btn-secondary">
+                                            <i class="fas fa-arrow-left"></i> Volver
+                                        </a>
+                                        <button type="submit" class="btn" style="background-color: #9BBF63; color: white;">
+                                            <i class="fas fa-save"></i> Guardar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer th:replace="~{layout/plantilla :: footer}" class="mt-auto"></footer>
+    </body>
+</html>

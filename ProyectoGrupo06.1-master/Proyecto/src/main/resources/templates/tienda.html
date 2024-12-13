@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Tienda Vida Animal</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div class="container mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-custom-purple"><span style="color: #9BBF63;">Nuestra Tienda</span></h1>
+                <div class="d-flex gap-2">
+                    <!-- Botón para gestionar productos -->
+                    <a th:href="@{/producto/listado}" class="btn"
+                       style="background-color: #9BBF63; border-color: #9BBF63; color: white; transition: background-color 0.3s, border-color 0.3s;"
+                       onmouseover="this.style.backgroundColor = '#8AAF52'; this.style.borderColor = '#8AAF52';"
+                       onmouseout="this.style.backgroundColor = '#9BBF63'; this.style.borderColor = '#9BBF63';">
+                        <i class="fas fa-box"></i>
+                        Gestionar Productos
+                    </a>
+                    <!-- Botón para gestionar categorías -->
+                    <a th:href="@{/categoria/listado}" class="btn"
+                       style="background-color: #78A1BB; border-color: #78A1BB; color: white; transition: background-color 0.3s, border-color 0.3s;"
+                       onmouseover="this.style.backgroundColor = '#5B7F99'; this.style.borderColor = '#5B7F99';"
+                       onmouseout="this.style.backgroundColor = '#78A1BB'; this.style.borderColor = '#78A1BB';">
+                        <i class="fas fa-cog"></i>
+                        Gestionar Categorías
+                    </a>
+                </div>
+            </div>
+
+            <!-- Barra de búsqueda -->
+            <div class="row mb-4">
+                <div class="col-md-6 mx-auto">
+                    <form th:action="@{/tienda}" method="get" class="d-flex">
+                        <input type="text" 
+                               name="busqueda" 
+                               class="form-control me-2" 
+                               placeholder="Buscar productos..."
+                               th:value="${busqueda}">
+                        <input type="hidden" 
+                               name="categoria" 
+                               th:value="${categoriaSeleccionada}">
+                        <button class="btn btn-custom-purple" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <style>
+                .btn-outline-secondary {
+                    border-color: #9BBF63;
+                    color: #9BBF63;
+                    transition: all 0.3s ease;
+                }
+
+                .btn-outline-secondary:hover {
+                    background-color: #9BBF63;
+                    color: white;
+                    border-color: #9BBF63;
+                }
+            </style>
+
+            <!-- Filtro de categorías -->
+            <div class="text-center mb-4">
+                <a th:href="@{/tienda(busqueda=${busqueda})}"
+                   class="btn me-2"
+                   th:classappend="${categoriaSeleccionada == null ? 'btn-custom-green' : 'btn-outline-secondary'}">
+                    Todos
+                </a>
+                <a th:each="cat : ${categorias}" 
+                   th:href="@{/tienda(categoria=${cat},busqueda=${busqueda})}"
+                   class="btn me-2 btn-outline-secondary"
+                   th:classappend="${cat == categoriaSeleccionada ? 'btn-custom-green' : ''}">
+                    [[${cat}]]
+                </a>
+            </div>
+
+            <!-- Sección de productos -->
+            <div class="row">
+                <div th:each="producto : ${productos}" class="col-md-4 mb-4">
+                    <div class="card h-100 border-custom-green">
+                        <img th:src="${producto.rutaImagen}" class="card-img-top" alt="Imagen del producto" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-custom-purple" th:text="${producto.nombre}">Nombre del Producto</h5>
+                            <p class="card-text" th:text="${producto.descripcion}">Descripción del producto</p>
+                            <p class="card-text">
+                                <strong class="text-custom-green">Precio: </strong>
+                                <span th:text="'₡' + ${#numbers.formatDecimal(producto.precio, 0, 'COMMA', 2, 'POINT')}">Precio</span>
+                            </p>
+                            <p class="card-text">
+                                <strong class="text-custom-green">Disponibles: </strong>
+                                <span th:text="${producto.existencias}">Existencias</span>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <div class="d-grid gap-2">
+                                <button th:if="${producto.tieneExistencias()}" 
+                                        class="btn btn-custom-green"
+                                        onclick="agregarAlCarrito(this)"
+                                        th:data-id="${producto.idProducto}"
+                                        th:data-nombre="${producto.nombre}"
+                                        th:data-precio="${producto.precio}">
+                                    <i class="fas fa-shopping-cart"></i> Agregar al Carrito
+                                </button>
+                                <button th:unless="${producto.tieneExistencias()}" 
+                                        class="btn btn-secondary" 
+                                        disabled>
+                                    Agotado
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensaje cuando no hay productos -->
+            <div th:if="${#lists.isEmpty(productos)}" class="alert alert-info text-center">
+                No se encontraron productos que coincidan con tu búsqueda.
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <!-- Script para el carrito -->
+        <script>
+            function agregarAlCarrito(button) {
+                const id = button.getAttribute('data-id');
+                const nombre = button.getAttribute('data-nombre');
+                const precio = button.getAttribute('data-precio');
+
+                // Aquí implementaremos la lógica del carrito
+                console.log(`Agregando producto: ${nombre} (ID: ${id}) - Precio: ${precio}`);
+                // Por ahora solo mostramos una alerta
+                alert('Producto agregado al carrito');
+            }
+        </script>
+    </body>
+</html>
