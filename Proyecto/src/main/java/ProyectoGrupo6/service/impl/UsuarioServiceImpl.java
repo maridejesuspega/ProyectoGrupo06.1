@@ -4,15 +4,12 @@
  */
 package ProyectoGrupo6.service.impl;
 
-/**
- *
- * @author Armando Elizondo M
- */
 import ProyectoGrupo6.dao.RolDao;
 import ProyectoGrupo6.dao.UsuarioDao;
 import ProyectoGrupo6.domain.Rol;
 import ProyectoGrupo6.domain.Usuario;
 import ProyectoGrupo6.servic.UsuarioService;
+import ProyectoGrupo6.util.ValidationUtil;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
+
     @Autowired
     private UsuarioDao usuarioDao;
+
     @Autowired
     private RolDao rolDao;
 
@@ -64,8 +63,14 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional
     public void save(Usuario usuario, boolean crearRolUser) {
-        usuario=usuarioDao.save(usuario);
-        if (crearRolUser) {  //Si se está creando el usuario, se crea el rol por defecto "USER"
+        // Validar campos obligatorios
+        validarUsuario(usuario);
+
+        // Guardar usuario
+        usuario = usuarioDao.save(usuario);
+
+        // Crear rol por defecto si es necesario
+        if (crearRolUser) {
             Rol rol = new Rol();
             rol.setNombre("ROLE_USER");
             rol.setIdUsuario(usuario.getIdUsuario());
@@ -78,5 +83,21 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void delete(Usuario usuario) {
         usuarioDao.delete(usuario);
     }
-    
+
+    /**
+     * Valida los datos del usuario antes de guardarlos.
+     *
+     * @param usuario Usuario a validar.
+     */
+    private void validarUsuario(Usuario usuario) {
+        if (!ValidationUtil.isValidName(usuario.getNombre()) || 
+            !ValidationUtil.isValidName(usuario.getApellidos())) {
+            throw new IllegalArgumentException("El nombre y apellidos son obligatorios");
+        }
+
+        if (usuario.getTelefono() != null && !usuario.getTelefono().isEmpty() && 
+            !ValidationUtil.isValidPhoneNumber(usuario.getTelefono())) {
+            throw new IllegalArgumentException("El número de teléfono debe tener 8 dígitos");
+        }
+    }
 }

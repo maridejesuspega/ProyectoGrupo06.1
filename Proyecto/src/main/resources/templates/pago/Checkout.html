@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Checkout - VidaAnimal</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-header" style="background-color: #9BBF63; color: white;">
+                            <h3 class="mb-0">Checkout</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Resumen de la compra -->
+                            <div class="mb-4">
+                                <h5>Resumen de la Compra</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Cantidad</th>
+                                                <th>Precio</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="item : ${items}">
+                                                <td th:text="${item.nombre}">Producto</td>
+                                                <td th:text="${item.cantidad}">1</td>
+                                                <td th:text="${'₡' + #numbers.formatDecimal(item.precio, 0, 'COMMA', 0, 'POINT')}">₡0</td>
+                                                <td th:text="${'₡' + #numbers.formatDecimal(item.subtotal, 0, 'COMMA', 0, 'POINT')}">₡0</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                                <td th:text="${'₡' + #numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}">₡0</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Formulario de pago -->
+                            <form id="payment-form" th:action="@{/pago/procesar}" method="post">
+                                <h5 class="mb-3">Información de Pago</h5>
+
+                                <!-- Método de pago -->
+                                <div class="mb-4">
+                                    <label class="form-label">Método de Pago</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="paymentMethod" id="card" value="card" checked>
+                                            <label class="form-check-label" for="card">
+                                                Tarjeta de Crédito/Débito
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="paymentMethod" id="sinpe" value="sinpe">
+                                            <label class="form-check-label" for="sinpe">
+                                                SINPE Móvil
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Campos de tarjeta -->
+                                <div id="card-fields">
+                                    <div class="mb-3">
+                                        <label for="card-number" class="form-label">Número de Tarjeta</label>
+                                        <input type="text" class="form-control" id="card-number" name="card-number" required
+                                               pattern="[0-9]{16}" maxlength="16" placeholder="1234 5678 9012 3456">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="card-holder" class="form-label">Nombre del Titular de la Tarjeta</label>
+                                        <input type="text" class="form-control" id="card-holder" name="card-holder" required
+                                               placeholder="Nombre completo">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="expiry" class="form-label">Fecha de Vencimiento</label>
+                                            <input type="text" class="form-control" id="expiry" name="expiry" required
+                                                   pattern="(0[1-9]|1[0-2])\/([0-9]{2})" placeholder="MM/YY">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cvv" name="cvv" required
+                                                   pattern="[0-9]{3,4}" maxlength="4" placeholder="123">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Campos SINPE -->
+                                <div id="sinpe-fields" style="display: none;">
+                                    <div class="mb-3">
+                                        <label class="form-label">Número de Teléfono SINPE Móvil</label>
+                                        <input type="tel" class="form-control" id="sinpe-phone"
+                                               pattern="[0-9]{8}" maxlength="8" placeholder="88888888">
+                                    </div>
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn" style="background-color: #9BBF63; color: white;">
+                                        Confirmar Pago
+                                    </button>
+                                    <a href="/carrito" class="btn btn-outline-secondary">Volver al Carrito</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <script>
+            // Cambiar entre métodos de pago
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const cardFields = document.getElementById('card-fields');
+                    const sinpeFields = document.getElementById('sinpe-fields');
+
+                    if (this.value === 'card') {
+                        cardFields.style.display = 'block';
+                        sinpeFields.style.display = 'none';
+                        enableCardValidation();
+                        disableSinpeValidation();
+                    } else {
+                        cardFields.style.display = 'none';
+                        sinpeFields.style.display = 'block';
+                        disableCardValidation();
+                        enableSinpeValidation();
+                    }
+                });
+            });
+
+            function enableCardValidation() {
+                document.getElementById('card-number').required = true;
+                document.getElementById('expiry').required = true;
+                document.getElementById('cvv').required = true;
+                document.getElementById('sinpe-phone').required = false;
+            }
+
+            function disableCardValidation() {
+                document.getElementById('card-number').required = false;
+                document.getElementById('expiry').required = false;
+                document.getElementById('cvv').required = false;
+            }
+
+            function enableSinpeValidation() {
+                document.getElementById('sinpe-phone').required = true;
+            }
+
+            function disableSinpeValidation() {
+                document.getElementById('sinpe-phone').required = false;
+            }
+
+            // Validación del formulario
+            document.getElementById('payment-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Simular procesamiento de pago
+                const loadingBtn = this.querySelector('button[type="submit"]');
+                loadingBtn.disabled = true;
+                loadingBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Procesando...';
+
+                // Simular delay de procesamiento
+                setTimeout(() => {
+                    this.submit();
+                }, 2000);
+            });
+        </script>
+    </body>
+</html>

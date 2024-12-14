@@ -60,6 +60,9 @@
                             <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/contacto}">[[#{plantilla.contacto}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/tienda}">[[#{plantilla.suTienda}]]</a></li>
                             <li class="nav-item px-2"><a class="nav-link text-white" th:href="@{/conozcanos}">[[#{plantilla.conozcanos}]]</a></li>
+                            <li class="nav-item px-2" sec:authorize="isAuthenticated()">
+                                <a class="nav-link text-white" th:href="@{/perfil}">Mi Perfil</a>
+                            </li>
                             <!-- Botón del carrito -->
                             <li class="nav-item px-2">
                                 <a class="nav-link text-white position-relative" th:href="@{/carrito}">
@@ -90,6 +93,8 @@
                                     <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle"/>
                                     <span sec:authentication='name'>Santi</span>
                                 </li>
+                                <li
+                                    </li>
                                 <li class="nav-item my-auto">
                                     <form method="post" th:action="@{/logout}">
                                         <button class="btn btn-dark">
@@ -132,11 +137,11 @@
 
                 <hr class="border-light my-2">
 
-                <div class="row">
-                    <div class="col text-center">
-                        <p class="mb-0">&COPY; [[#{plantilla.derechos}]]</p>
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="mb-0">&COPY; [[#{plantilla.derechos}]]</p>
+                        </div>
                     </div>
-                </div>
             </div>
         </footer>
     </body>

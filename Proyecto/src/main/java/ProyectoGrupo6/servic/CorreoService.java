@@ -4,11 +4,13 @@
  */
 package ProyectoGrupo6.servic;
 
+import jakarta.mail.MessagingException;
+
 /**
  *
  * @author Kenneth
  */
-import jakarta.mail.MessagingException;
+
 
 public interface CorreoService {
     public void enviarCorreoHtml(
