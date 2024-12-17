@@ -65,19 +65,33 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
 
     /* Activar cuando se va a estar en ambiente de producción*/
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((request) -> request
-                .anyRequest().permitAll() // Permitir acceso a todas las URL
-                )
-                .csrf().disable() // Opcional: desactiva CSRF para facilitar pruebas (no recomendado en producción)
-                .formLogin((form) -> form
-                .loginPage("/login").permitAll()
-                )
-                .logout((logout) -> logout.permitAll());
-        return http.build();
-    }
+   @Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests((request) -> request
+            .requestMatchers(
+                "/", "/inicio/**", "/contacto/**",
+                "/conozcanos/**", "/servicios/**", "/tienda/**",
+                "/js/**", "/webjars/**", "/img/**", "/css/**", "/registro/**"
+            ).permitAll()
+            .requestMatchers(
+                "/producto/nuevo", "/producto/guardar", 
+                "/producto/modificar/**", "/producto/eliminar/**", 
+                "/categoria/nuevo", "/categoria/guardar", 
+                "/categoria/modificar/**", "/categoria/eliminar/**"
+            ).hasRole("ADMIN")
+            .requestMatchers("/producto/listado", "/categoria/listado")
+            .hasAnyRole("ADMIN", "VENDEDOR")
+            .requestMatchers("/", "/inicio/**", "/contacto/**",
+                "/conozcanos/**", "/servicios/**", "/tienda/**",
+                "/js/**", "/webjars/**", "/img/**", "/css/**", "/registro/**","/login/**","/registro").hasRole("USER")
+        )
+        .formLogin((form) -> form
+            .loginPage("/login").permitAll()
+        )
+        .logout((logout) -> logout.permitAll());
+    return http.build();
+}
 
 
     /* Activar cuando se va a estar en ambiente de desarrollo
